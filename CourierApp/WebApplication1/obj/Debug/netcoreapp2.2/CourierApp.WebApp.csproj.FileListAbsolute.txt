@@ -1,0 +1,17 @@
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.Data.dll
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.csprojAssemblyReference.cache
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.csproj.CoreCompileInputs.cache
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.RazorAssemblyInfo.cache
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.RazorAssemblyInfo.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.AssemblyInfoInputs.cache
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.AssemblyInfo.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.RazorTargetAssemblyInfo.cache
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.WebApp.deps.json
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.WebApp.runtimeconfig.json
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.WebApp.runtimeconfig.dev.json
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.WebApp.dll
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.WebApp.pdb
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.Data.pdb
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.csproj.CopyComplete
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.dll
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.pdb
