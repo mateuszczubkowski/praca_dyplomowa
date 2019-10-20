@@ -2,7 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using CourierApp.Core.Implementation;
+using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Data;
+using CourierApp.WebApp.Mapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -39,6 +43,17 @@ namespace CourierApp.WebApp
                 .AddDbContext<CourierAppDbContext>(options =>
                     options.UseNpgsql(connectionString, dbBuilder => dbBuilder.MigrationsAssembly("CourierApp.WebApp")));
 
+            services.AddSingleton<ICourierManagementService, CourierManagementService>();
+            services.AddSingleton<IReviewService, ReviewService>();
+
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new DtoToModelProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

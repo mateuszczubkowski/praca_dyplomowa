@@ -1,0 +1,14 @@
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\bin\Debug\netstandard2.0\CourierApp.Core.deps.json
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\bin\Debug\netstandard2.0\CourierApp.Core.dll
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\bin\Debug\netstandard2.0\CourierApp.Core.pdb
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\bin\Debug\netstandard2.0\CourierApp.Data.dll
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\bin\Debug\netstandard2.0\CourierApp.Data.pdb
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.xml
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard2.0\CourierApp.Core.csprojAssemblyReference.cache
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard2.0\CourierApp.Core.csproj.CoreCompileInputs.cache
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard2.0\CourierApp.Core.AssemblyInfoInputs.cache
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard2.0\CourierApp.Core.AssemblyInfo.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard2.0\CourierApp.Core.csproj.CopyComplete
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard2.0\CourierApp.Core.dll
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard2.0\CourierApp.Core.pdb
