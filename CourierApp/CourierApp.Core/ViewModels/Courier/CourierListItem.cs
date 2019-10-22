@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace CourierApp.WebApp.Dto.Courier
+namespace CourierApp.Core.ViewModels.Courier
 {
-    public class GetCourierListDto
+    public class CourierListItem
     {
         public string FirstName { get; set; }
 

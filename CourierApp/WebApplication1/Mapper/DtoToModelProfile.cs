@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CourierApp.Data.Models;
-using CourierApp.WebApp.Dto.Courier;
 
 namespace CourierApp.WebApp.Mapper
 {
@@ -12,7 +11,7 @@ namespace CourierApp.WebApp.Mapper
     {
         public DtoToModelProfile()
         {
-            CreateMap<GetCourierListDto, Courier>();
+
         }
     }
 }

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CourierApp.Core.Implementation.Interfaces;
+using CourierApp.Core.ViewModels.Courier;
 using CourierApp.Data.Models;
-using CourierApp.WebApp.Dto.Courier;
 
 namespace CourierApp.WebApp.Mapper
 {
@@ -13,7 +13,7 @@ namespace CourierApp.WebApp.Mapper
     {
         public ModelToDtoProfile(IReviewService reviewService)
         {
-            CreateMap<Courier, GetCourierListDto>().ForMember(dest => dest.Mark, opt => opt.MapFrom(src => reviewService.GetCourierAvgMark(src.Id)));
+            CreateMap<Courier, CourierListItem>().ForMember(dest => dest.Mark, opt => opt.MapFrom(src => reviewService.GetCourierAvgMark(src.Id)));
         }
     }
 }
