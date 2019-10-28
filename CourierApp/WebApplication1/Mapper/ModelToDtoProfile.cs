@@ -13,7 +13,7 @@ namespace CourierApp.WebApp.Mapper
     {
         public ModelToDtoProfile(IReviewService reviewService)
         {
-            CreateMap<Courier, CourierListItem>().ForMember(dest => dest.Mark, opt => opt.MapFrom(src => reviewService.GetCourierAvgMark(src.Id)));
+            CreateMap<Courier, CourierListItemViewModel>().ForMember(dest => dest.Mark, opt => opt.MapFrom(src => reviewService.GetCourierAvgMark(src.Id)));
         }
     }
 }

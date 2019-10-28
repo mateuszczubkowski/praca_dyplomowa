@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels.Courier;
+using CourierApp.Core.ViewModels.Review;
 using CourierApp.Data;
 using CourierApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
@@ -15,11 +16,13 @@ namespace CourierApp.Core.Implementation
     {
         private readonly CourierAppDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly IReviewService _reviewService;
 
-        public CourierManagementService(CourierAppDbContext dbContext, IMapper mapper)
+        public CourierManagementService(CourierAppDbContext dbContext, IMapper mapper, IReviewService reviewService)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _reviewService = reviewService;
         }
 
         public Task AddCourier()
@@ -27,23 +30,28 @@ namespace CourierApp.Core.Implementation
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<CourierListItem>> GetCouriersList()
+        public async Task<IEnumerable<CourierListItemViewModel>> GetCouriersList()
         {
-            var result = new List<CourierListItem>();
-
-            var couriers = await _dbContext.Couriers.AsNoTracking().OrderBy(x => x.SecondName).ToListAsync();
-
-            foreach (var courier in couriers)
+            return await _dbContext.Couriers.AsNoTracking().Select(x => new CourierListItemViewModel()
             {
-                result.Add(_mapper.Map<CourierListItem>(courier));
-            }
-
-            return result;
+                Email = x.Email,
+                FirstName = x.FirstName,
+                SecondName = x.SecondName,
+                Mark = _reviewService.GetCourierAvgMark(x.Id),
+                PhoneNumber =x.PhoneNumber
+            }).ToListAsync();
         }
 
-        public Task GetCourier(int id)
+        public async Task<CourierReviewsDetailsViewModel> GetCourier(int id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Couriers.AsNoTracking()
+                .Where(x => x.Id == id)
+                .Select(x => new CourierReviewsDetailsViewModel()
+                {
+                    FirstName = x.FirstName,
+                    SecondName = x.SecondName,
+                    ReviewsList = _reviewService.GetCourierReviews(x.Id)
+                }).FirstOrDefaultAsync();
         }
     }
 }

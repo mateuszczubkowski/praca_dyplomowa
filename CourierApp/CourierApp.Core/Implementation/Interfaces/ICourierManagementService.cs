@@ -11,8 +11,8 @@ namespace CourierApp.Core.Implementation.Interfaces
     {
         Task AddCourier();
 
-        Task<IEnumerable<CourierListItem>> GetCouriersList();
+        Task<IEnumerable<CourierListItemViewModel>> GetCouriersList();
 
-        Task GetCourier(int id);
+        Task<CourierReviewsDetailsViewModel> GetCourier(int id);
     }
 }

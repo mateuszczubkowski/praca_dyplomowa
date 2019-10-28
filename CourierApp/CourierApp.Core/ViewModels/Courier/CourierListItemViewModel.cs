@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CourierApp.Core.ViewModels.Courier
 {
-    public class CourierListItem
+    public class CourierListItemViewModel
     {
         public string FirstName { get; set; }
 
