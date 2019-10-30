@@ -2907,6 +2907,25 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
+      "NonFactors.Grid.Core.Mvc6/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.1.8",
+          "System.Linq.Queryable": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/Mvc.Grid.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Mvc.Grid.Core.dll": {}
+        }
+      },
+      "NonFactors.Grid.Mvc6/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "NonFactors.Grid.Core.Mvc6": "[5.1.1]"
+        }
+      },
       "Npgsql/4.0.9": {
         "type": "package",
         "dependencies": {
@@ -3774,17 +3793,17 @@
           "lib/netstandard1.3/System.Linq.Parallel.dll": {}
         }
       },
-      "System.Linq.Queryable/4.0.1": {
+      "System.Linq.Queryable/4.3.0": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.0.11",
-          "System.Diagnostics.Debug": "4.0.11",
-          "System.Linq": "4.1.0",
-          "System.Linq.Expressions": "4.1.0",
-          "System.Reflection": "4.1.0",
-          "System.Reflection.Extensions": "4.0.1",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0"
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Linq.Expressions": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Extensions": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.0/System.Linq.Queryable.dll": {}
@@ -8188,6 +8207,35 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
+    "NonFactors.Grid.Core.Mvc6/5.1.1": {
+      "sha512": "uCfbORGBhjt5CtA3d5xvPdpergg5jCNtLkAFohjyXdgLAQ1bEjCI5hWdrPj93bHy7vTEmbjHvLK6SBfv2HADPA==",
+      "type": "package",
+      "path": "nonfactors.grid.core.mvc6/5.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/Mvc.Grid.Core.dll",
+        "lib/netstandard1.6/Mvc.Grid.Core.dll",
+        "nonfactors.grid.core.mvc6.5.1.1.nupkg.sha512",
+        "nonfactors.grid.core.mvc6.nuspec"
+      ]
+    },
+    "NonFactors.Grid.Mvc6/5.1.1": {
+      "sha512": "6IKlDSeHl/4/5lh9fzkMt93EAZZWhAy2XHvrFiR0h3jgyunRb9rHhia3yg2c0JZrKaH7MV4ecuZ6wuJQMlNuxg==",
+      "type": "package",
+      "path": "nonfactors.grid.mvc6/5.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Views/Shared/MvcGrid/_Grid.cshtml",
+        "content/Views/Shared/MvcGrid/_Pager.cshtml",
+        "content/css/mvc-grid/fonts/grid-glyphs.woff",
+        "content/css/mvc-grid/mvc-grid.css",
+        "content/js/mvc-grid/mvc-grid.js",
+        "nonfactors.grid.mvc6.5.1.1.nupkg.sha512",
+        "nonfactors.grid.mvc6.nuspec"
+      ]
+    },
     "Npgsql/4.0.9": {
       "sha512": "1yST8Qipk7sjweL7w6KeNWPNUWLcbQ+/k/jFPCtJh+IpyL/2+zUL1YW/8zsa6OzdjiI0P3vOc+WUTGAntnLClg==",
       "type": "package",
@@ -10222,12 +10270,13 @@
         "system.linq.parallel.nuspec"
       ]
     },
-    "System.Linq.Queryable/4.0.1": {
-      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
+    "System.Linq.Queryable/4.3.0": {
+      "sha512": "In1Bmmvl/j52yPu3xgakQSI0YIckPUr870w4K5+Lak3JCCa8hl+my65lABOuKfYs4ugmZy25ScFerC4nz8+b6g==",
       "type": "package",
-      "path": "system.linq.queryable/4.0.1",
+      "path": "system.linq.queryable/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/monoandroid10/_._",
@@ -10276,7 +10325,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.linq.queryable.4.0.1.nupkg.sha512",
+        "system.linq.queryable.4.3.0.nupkg.sha512",
         "system.linq.queryable.nuspec"
       ]
     },
@@ -13104,6 +13153,7 @@
       "Microsoft.EntityFrameworkCore >= 2.2.6",
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.4",
+      "NonFactors.Grid.Mvc6 >= 5.1.1",
       "Npgsql >= 4.0.9",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 2.2.4"
     ]
@@ -13188,6 +13238,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.2.4, )"
+          },
+          "NonFactors.Grid.Mvc6": {
+            "target": "Package",
+            "version": "[5.1.1, )"
           },
           "Npgsql": {
             "target": "Package",

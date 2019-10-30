@@ -43,8 +43,8 @@ namespace CourierApp.WebApp
                 .AddDbContext<CourierAppDbContext>(options =>
                     options.UseNpgsql(connectionString, dbBuilder => dbBuilder.MigrationsAssembly("CourierApp.WebApp")));
 
-            services.AddSingleton<ICourierManagementService, CourierManagementService>();
-            services.AddSingleton<IReviewService, ReviewService>();
+            services.AddScoped<ICourierManagementService, CourierManagementService>();
+            services.AddScoped<IReviewService, ReviewService>();
 
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>
@@ -76,7 +76,12 @@ namespace CourierApp.WebApp
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

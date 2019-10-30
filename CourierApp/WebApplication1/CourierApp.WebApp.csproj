@@ -5,6 +5,16 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\css\mvc-grid\fonts\grid-glyphs.woff" />
+    <Content Remove="wwwroot\css\mvc-grid\mvc-grid.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\mvc-grid\fonts\grid-glyphs.woff" />
+    <None Include="wwwroot\css\mvc-grid\mvc-grid.css" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
@@ -13,6 +23,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="NonFactors.Grid.Mvc6" Version="5.1.1" />
     <PackageReference Include="Npgsql" Version="4.0.9" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.4" />
   </ItemGroup>

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<CourierApp.Core.ViewModels.Courier.CourierListItemViewModel>
+
+@(Html
+      .Grid(Model)
+      .Build(columns =>
+      {
+          columns.Add(model => model.SecondName).Titled("Nazwisko");
+          columns.Add(model => model.FirstName).Titled("Imię");
+          columns.Add(model => model.Email).Titled("Email");
+          columns.Add(model => model.PhoneNumber).Titled("Numer telefonu");
+      })
+      .Empty("No data found")
+      .Filterable()
+      .Sortable()
+      .Pageable()
+      )

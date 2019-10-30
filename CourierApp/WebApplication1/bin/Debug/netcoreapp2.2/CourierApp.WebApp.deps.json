@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "8b327861214632745c56ee88b0efd91f3f999ee8"
+    "signature": "c013f7122ac9bbf1eb07d30fe84e1da7feef716c"
   },
   "compilationOptions": {
     "defines": [
@@ -33,6 +33,7 @@
           "Microsoft.EntityFrameworkCore": "2.2.6",
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.4",
+          "NonFactors.Grid.Mvc6": "5.1.1",
           "Npgsql": "4.0.9",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "2.2.4"
         },
@@ -448,6 +449,26 @@
           "Microsoft.NETCore.Platforms": "2.2.0"
         }
       },
+      "NonFactors.Grid.Core.Mvc6/5.1.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
+          "System.Linq.Queryable": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/Mvc.Grid.Core.dll": {
+            "assemblyVersion": "5.1.1.0",
+            "fileVersion": "5.1.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.6/Mvc.Grid.Core.dll": {}
+        }
+      },
+      "NonFactors.Grid.Mvc6/5.1.1": {
+        "dependencies": {
+          "NonFactors.Grid.Core.Mvc6": "5.1.1"
+        }
+      },
       "Npgsql/4.0.9": {
         "dependencies": {
           "System.Memory": "4.5.3",
@@ -502,7 +523,7 @@
           "System.Diagnostics.Debug": "4.3.0",
           "System.Linq": "4.3.0",
           "System.Linq.Expressions": "4.3.0",
-          "System.Linq.Queryable": "4.0.1",
+          "System.Linq.Queryable": "4.3.0",
           "System.ObjectModel": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
@@ -669,7 +690,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Linq.Queryable/4.0.1": {
+      "System.Linq.Queryable/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -3800,6 +3821,20 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
+    "NonFactors.Grid.Core.Mvc6/5.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uCfbORGBhjt5CtA3d5xvPdpergg5jCNtLkAFohjyXdgLAQ1bEjCI5hWdrPj93bHy7vTEmbjHvLK6SBfv2HADPA==",
+      "path": "nonfactors.grid.core.mvc6/5.1.1",
+      "hashPath": "nonfactors.grid.core.mvc6.5.1.1.nupkg.sha512"
+    },
+    "NonFactors.Grid.Mvc6/5.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6IKlDSeHl/4/5lh9fzkMt93EAZZWhAy2XHvrFiR0h3jgyunRb9rHhia3yg2c0JZrKaH7MV4ecuZ6wuJQMlNuxg==",
+      "path": "nonfactors.grid.mvc6/5.1.1",
+      "hashPath": "nonfactors.grid.mvc6.5.1.1.nupkg.sha512"
+    },
     "Npgsql/4.0.9": {
       "type": "package",
       "serviceable": true,
@@ -3891,12 +3926,12 @@
       "path": "system.linq.parallel/4.3.0",
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
     },
-    "System.Linq.Queryable/4.0.1": {
+    "System.Linq.Queryable/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
-      "path": "system.linq.queryable/4.0.1",
-      "hashPath": "system.linq.queryable.4.0.1.nupkg.sha512"
+      "sha512": "sha512-In1Bmmvl/j52yPu3xgakQSI0YIckPUr870w4K5+Lak3JCCa8hl+my65lABOuKfYs4ugmZy25ScFerC4nz8+b6g==",
+      "path": "system.linq.queryable/4.3.0",
+      "hashPath": "system.linq.queryable.4.3.0.nupkg.sha512"
     },
     "System.Memory/4.5.3": {
       "type": "package",

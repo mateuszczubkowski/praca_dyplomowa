@@ -37,9 +37,13 @@ namespace CourierApp.Core.Implementation
                 Email = x.Email,
                 FirstName = x.FirstName,
                 SecondName = x.SecondName,
-                Mark = _reviewService.GetCourierAvgMark(x.Id),
                 PhoneNumber =x.PhoneNumber
             }).ToListAsync();
+
+            //foreach (var courier in couriers)
+            //{
+            //    courier.Mark = _reviewService.GetCourierAvgMark(courier.)
+            //}
         }
 
         public async Task<CourierReviewsDetailsViewModel> GetCourier(int id)

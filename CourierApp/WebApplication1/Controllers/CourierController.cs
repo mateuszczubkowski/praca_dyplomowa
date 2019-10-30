@@ -21,9 +21,11 @@ namespace CourierApp.WebApp.Controllers
             return View();
         }
 
-        public IActionResult CourierList()
+        public async Task<IActionResult> CourierList()
         {
-            _courierManagement.GetCouriersList();
+            var result = await _courierManagement.GetCouriersList();
+
+            return View(result);
         }
     }
 }
