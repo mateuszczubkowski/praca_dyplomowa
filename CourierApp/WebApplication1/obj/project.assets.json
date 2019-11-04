@@ -4796,7 +4796,8 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AutoMapper": "9.0.0",
-          "CourierApp.Data": "1.0.0"
+          "CourierApp.Data": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.DataAnnotations": "2.2.0"
         },
         "compile": {
           "bin/placeholder/CourierApp.Core.dll": {}

@@ -1,0 +1,68 @@
+﻿@model CourierApp.Core.ViewModels.Courier.CreateCourierViewModel
+
+@{
+    ViewData["Title"] = "Dodaj kuriera";
+}
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-8 offset-md-2">
+            <div class="row mb-3">
+                <div class="col-md-12 h3 text-center">
+                    Dodaj kuriera
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-12 text-left ">
+                    @await Html.PartialAsync("_ValidationSummary")
+                    <form asp-controller="Courier" asp-action="Create" method="post" autocomplete="off">
+                        <div class="row pt-1 ">
+                            <div class="col-md-3 text-right py-2">
+                                <label asp-for="FirstName"></label> *
+                            </div>
+                            <div class="col-md-9 ">
+                                <input type="text" asp-for="FirstName" class="form-control" />
+                            </div>
+                        </div>
+
+                            <div class="row pt-1 ">
+                                <div class="col-md-3 text-right py-2">
+                                    <label asp-for="SecondName"></label> *
+                                </div>
+                                <div class="col-md-9">
+                                    <input asp-for="SecondName" type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="row pt-1">
+                                <div class="col-md-3 text-right py-2">
+                                    <label asp-for="PhoneNumber"></label>
+                                </div>
+                                <div class="col-md-9 text-left py-2">
+                                    <input asp-for="PhoneNumber" type="text" class="form-control" />
+                                </div>
+                            </div>
+                                <div class="row pt-1 ">
+                                    <div class="col-md-3 text-right py-2">
+                                        <label asp-for="Email"></label> *
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input asp-for="Email" type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                            <div class="row mt-1">
+                                <div class="col-md offset-md-3 text-right">
+                                    <input type="submit" value="Zapisz" class="btn btn-success w-100" />
+                                </div>
+                                <div class="col-md text-left">
+                                    <a class="btn btn-secondary w-100" asp-action="Index" asp-controller="Courier">Anuluj</a>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

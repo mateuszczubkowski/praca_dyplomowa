@@ -25,9 +25,19 @@ namespace CourierApp.Core.Implementation
             _reviewService = reviewService;
         }
 
-        public Task AddCourier()
+        public async Task AddCourier(CreateCourierViewModel model)
         {
-            throw new NotImplementedException();
+            var courier = new Courier
+            {
+                FirstName = model.FirstName,
+                SecondName = model.SecondName,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
+                Password = "niewazne"
+            };
+
+            await _dbContext.Couriers.AddAsync(courier);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<CourierListItemViewModel>> GetCouriersList()
