@@ -32,6 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CourierApp.Core\CourierApp.Core.csproj" />
     <ProjectReference Include="..\CourierApp.Data\CourierApp.Data.csproj" />
+    <ProjectReference Include="..\CourierApp.MailService\CourierApp.MailService.csproj" />
   </ItemGroup>
 
 </Project>

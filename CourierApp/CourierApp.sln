@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourierApp.Data", "CourierA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourierApp.Core", "CourierApp.Core\CourierApp.Core.csproj", "{74026ACD-285D-4D1D-A54F-51E19DAD26A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourierApp.MailService", "CourierApp.MailService\CourierApp.MailService.csproj", "{65A415A4-EC96-4065-AAAC-16C3DB909E7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{74026ACD-285D-4D1D-A54F-51E19DAD26A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74026ACD-285D-4D1D-A54F-51E19DAD26A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74026ACD-285D-4D1D-A54F-51E19DAD26A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65A415A4-EC96-4065-AAAC-16C3DB909E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65A415A4-EC96-4065-AAAC-16C3DB909E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65A415A4-EC96-4065-AAAC-16C3DB909E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65A415A4-EC96-4065-AAAC-16C3DB909E7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

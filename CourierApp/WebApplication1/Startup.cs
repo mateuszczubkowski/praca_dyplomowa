@@ -6,6 +6,7 @@ using AutoMapper;
 using CourierApp.Core.Implementation;
 using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Data;
+using CourierApp.MailService;
 using CourierApp.WebApp.Mapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,6 +46,7 @@ namespace CourierApp.WebApp
 
             services.AddScoped<ICourierManagementService, CourierManagementService>();
             services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<IEmailService, EmailService>();
 
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>
@@ -54,6 +56,9 @@ namespace CourierApp.WebApp
 
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
+
+
+            services.Configure<EmailConfig>(Configuration.GetSection("Email"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

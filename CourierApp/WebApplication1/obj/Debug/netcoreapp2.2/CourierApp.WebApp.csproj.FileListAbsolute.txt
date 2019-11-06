@@ -38,3 +38,5 @@ C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Views\Courier\Index.g.cshtml.cs
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Views\Courier\Create.g.cshtml.cs
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationSummary.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.MailService.dll
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.MailService.pdb

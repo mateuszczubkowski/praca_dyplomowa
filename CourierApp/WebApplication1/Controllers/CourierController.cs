@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels.Courier;
+using CourierApp.MailService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourierApp.WebApp.Controllers
@@ -11,10 +9,12 @@ namespace CourierApp.WebApp.Controllers
     public class CourierController : Controller
     {
         private readonly ICourierManagementService _courierManagement;
+        private readonly IEmailService _emailService;
 
-        public CourierController(ICourierManagementService courierManagement)
+        public CourierController(ICourierManagementService courierManagement, IEmailService emailService)
         {
             _courierManagement = courierManagement;
+            _emailService = emailService;
         }
 
         [HttpGet]
@@ -44,6 +44,14 @@ namespace CourierApp.WebApp.Controllers
                 return View(model);
 
             await _courierManagement.AddCourier(model);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SendEmail()
+        {
+            await _emailService.SendEmailAsync("mateusz.czubkowski@gmail.com", "test", "test");
 
             return RedirectToAction("Index");
         }

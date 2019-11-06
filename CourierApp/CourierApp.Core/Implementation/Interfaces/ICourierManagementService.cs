@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using CourierApp.Core.ViewModels.Courier;
-using CourierApp.Data.Models;
 
 namespace CourierApp.Core.Implementation.Interfaces
 {
