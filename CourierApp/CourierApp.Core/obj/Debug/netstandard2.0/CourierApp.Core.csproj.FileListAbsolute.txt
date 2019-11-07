@@ -12,3 +12,5 @@ C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard
 C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard2.0\CourierApp.Core.csproj.CopyComplete
 C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard2.0\CourierApp.Core.dll
 C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\obj\Debug\netstandard2.0\CourierApp.Core.pdb
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\bin\Debug\netstandard2.0\CourierApp.MailService.dll
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.Core\bin\Debug\netstandard2.0\CourierApp.MailService.pdb

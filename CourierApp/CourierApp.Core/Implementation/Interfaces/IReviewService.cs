@@ -16,7 +16,7 @@ namespace CourierApp.Core.Implementation.Interfaces
 
         Task CreateReviewLink(int courierId, string reviewLink);
 
-        Task Create(string content, int mark, string author, string link);
+        Task Create(CreateReviewViewModel model);
 
         Task SendReviewLink(string mailTo, string link);
     }

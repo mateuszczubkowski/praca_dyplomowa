@@ -27,7 +27,7 @@ namespace CourierApp.Core.Implementation
             var reviews = _dbContext.Reviews.AsNoTracking().Where(r => r.CourierId == courierId)
                 .Select(r => r.Mark).ToList();
 
-            return Convert.ToDecimal(reviews.Average());
+            return reviews.Count != 0 ? Convert.ToDecimal(reviews.Average()) : 0;
         }
 
         public IEnumerable<ReviewListItemViewModel> GetCourierReviews(int id)
@@ -60,9 +60,9 @@ namespace CourierApp.Core.Implementation
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task Create(string content, int mark, string author, string link)
+        public async Task Create(CreateReviewViewModel model)
         {
-            var reviewLink = await _dbContext.ReviewLinks.FirstOrDefaultAsync(rl => rl.Link == link);
+            var reviewLink = await _dbContext.ReviewLinks.FirstOrDefaultAsync(rl => rl.Link == model.Link);
 
             if (reviewLink != null)
             {
@@ -71,10 +71,10 @@ namespace CourierApp.Core.Implementation
 
                 var review = new Review
                 {
-                    Author = author,
-                    Content = content,
-                    CourierId = Convert.ToInt32(link.Substring(link.Length - 2)),
-                    Mark = mark
+                    Author = model.Author,
+                    Content = model.Content,
+                    CourierId = Convert.ToInt32(model.Link.Substring(model.Link.Length - 1)),
+                    Mark = model.Mark
                 };
 
                 await _dbContext.Reviews.AddAsync(review);
@@ -89,7 +89,7 @@ namespace CourierApp.Core.Implementation
 
         public async Task SendReviewLink(string mailTo, string link)
         {
-            await _mailService.SendEmailAsync(mailTo, "Wystaw opinię", link);
+            await _mailService.SendEmailAsync(mailTo, "Wystaw opinię", $"https://localhost:44380/review/create?link={link}");
         }
     }
 }

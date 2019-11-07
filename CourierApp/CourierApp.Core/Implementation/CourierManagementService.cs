@@ -37,18 +37,21 @@ namespace CourierApp.Core.Implementation
 
         public async Task<IEnumerable<CourierListItemViewModel>> GetCouriersList()
         {
-            return await _dbContext.Couriers.AsNoTracking().Select(x => new CourierListItemViewModel()
+            var couriers = await _dbContext.Couriers.AsNoTracking().Select(x => new CourierListItemViewModel()
             {
                 Email = x.Email,
                 FirstName = x.FirstName,
                 SecondName = x.SecondName,
-                PhoneNumber =x.PhoneNumber
+                PhoneNumber =x.PhoneNumber,
+                Id = x.Id
             }).ToListAsync();
 
-            //foreach (var courier in couriers)
-            //{
-            //    courier.Mark = _reviewService.GetCourierAvgMark(courier.)
-            //}
+            foreach (var courier in couriers)
+            {
+                courier.Mark = _reviewService.GetCourierAvgMark(courier.Id);
+            }
+
+            return couriers;
         }
 
         public async Task<CourierReviewsDetailsViewModel> GetCourier(int id)

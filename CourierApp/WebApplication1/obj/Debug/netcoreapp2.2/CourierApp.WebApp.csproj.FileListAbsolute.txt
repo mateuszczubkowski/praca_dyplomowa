@@ -41,3 +41,4 @@ C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.MailService.dll
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\bin\Debug\netcoreapp2.2\CourierApp.MailService.pdb
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Views\Package\PackageList.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Views\Review\Create.g.cshtml.cs

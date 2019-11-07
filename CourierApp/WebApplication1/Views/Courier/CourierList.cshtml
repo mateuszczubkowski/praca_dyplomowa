@@ -8,6 +8,7 @@
           columns.Add(model => model.FirstName).Titled("Imię");
           columns.Add(model => model.Email).Titled("Email");
           columns.Add(model => model.PhoneNumber).Titled("Numer telefonu");
+          columns.Add(model => model.Mark).Titled("Średnia ocena");
       })
       .Empty("No data found")
       .Filterable()

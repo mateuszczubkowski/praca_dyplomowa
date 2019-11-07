@@ -1,0 +1,67 @@
+﻿@model CourierApp.Core.ViewModels.Review.CreateReviewViewModel
+
+@{
+    ViewData["Title"] = "Dodaj opinię";
+}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-8 offset-md-2">
+            <div class="row mb-3">
+                <div class="col-md-12 h3 text-center">
+                    Oceń nas!
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-12 text-left ">
+                    @await Html.PartialAsync("_ValidationSummary")
+                    <form asp-controller="Review" asp-action="Create" method="post" autocomplete="on">
+                        <div class="row pt-1 ">
+                            <div class="col-md-3 text-right py-2">
+                                <label asp-for="Content"></label>  *
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" asp-for="Content" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row pt-1 ">
+                            <div class="col-md-3 text-right py-2">
+                                <label asp-for="Mark"></label> *
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for="Mark" type="text" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row pt-1 ">
+                            <div class="col-md-3 text-right py-2">
+                                <label asp-for="Author"></label>
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for="Author" type="text" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row pt-1 d-none">
+                            <div class="col-md-3 text-right py-2">
+                                <label asp-for="Link"></label>
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for="Link" type="text" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row mt-1">
+                            <div class="col-md offset-md-3 text-right">
+                                <input type="submit" value="Zapisz" class="btn btn-success w-100" />
+                            </div>
+                            <div class="col-md text-left">
+                                <a class="btn btn-secondary w-100" asp-action="Index" asp-controller="Home">Anuluj</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

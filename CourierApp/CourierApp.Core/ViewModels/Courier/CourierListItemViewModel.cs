@@ -6,6 +6,8 @@ namespace CourierApp.Core.ViewModels.Courier
 {
     public class CourierListItemViewModel
     {
+        public int Id { get; set; }
+
         public string FirstName { get; set; }
 
         public string SecondName { get; set; }
