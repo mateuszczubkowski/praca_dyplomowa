@@ -11,8 +11,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourierApp.Data", "CourierApp.Data\CourierApp.Data.csproj", "{5E363000-1186-4E12-9DB2-342A61387112}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourierApp.Core", "CourierApp.Core\CourierApp.Core.csproj", "{74026ACD-285D-4D1D-A54F-51E19DAD26A2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{65A415A4-EC96-4065-AAAC-16C3DB909E7B} = {65A415A4-EC96-4065-AAAC-16C3DB909E7B}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourierApp.MailService", "CourierApp.MailService\CourierApp.MailService.csproj", "{65A415A4-EC96-4065-AAAC-16C3DB909E7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourierApp.MailService", "CourierApp.MailService\CourierApp.MailService.csproj", "{65A415A4-EC96-4065-AAAC-16C3DB909E7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

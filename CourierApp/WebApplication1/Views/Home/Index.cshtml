@@ -5,6 +5,7 @@
     <div class="text-center">
         <h1 class="display-4">Welcome</h1>
         <h2>Kurier</h2>
-        <a class="btn btn-success" data-toggle="tooltip" asp-controller="Courier" asp-action="Create">Dodaj</a>
-        <a class="btn btn-success" data-toggle="tooltip" asp-controller="Courier" asp-action="CourierList">Lista</a>
+        <a class="btn btn-success" asp-controller="Courier" asp-action="Create">Dodaj</a>
+        <a class="btn btn-success" asp-controller="Courier" asp-action="CourierList">Lista kurierów</a>
+        <a class="btn btn-danger" asp-controller="Package" asp-action="PackageList" asp-route-id="2">Lista paczek</a>
     </div>

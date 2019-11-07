@@ -4971,6 +4971,7 @@
         "dependencies": {
           "AutoMapper": "9.0.0",
           "CourierApp.Data": "1.0.0",
+          "CourierApp.MailService": "1.0.0",
           "Microsoft.AspNetCore.Mvc.DataAnnotations": "2.2.0"
         },
         "compile": {

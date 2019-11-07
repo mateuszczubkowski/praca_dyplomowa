@@ -11,5 +11,13 @@ namespace CourierApp.Core.Implementation.Interfaces
         decimal GetCourierAvgMark(int courierId);
 
         IEnumerable<ReviewListItemViewModel> GetCourierReviews(int id);
+
+        string CreateReviewLink(int courierId);
+
+        Task CreateReviewLink(int courierId, string reviewLink);
+
+        Task Create(string content, int mark, string author, string link);
+
+        Task SendReviewLink(string mailTo, string link);
     }
 }

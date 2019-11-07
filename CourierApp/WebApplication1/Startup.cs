@@ -46,6 +46,7 @@ namespace CourierApp.WebApp
 
             services.AddScoped<ICourierManagementService, CourierManagementService>();
             services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<IPackageService, PackageService>();
             services.AddScoped<IEmailService, EmailService>();
 
             // Auto Mapper Configurations

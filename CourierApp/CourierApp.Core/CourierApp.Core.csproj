@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CourierApp.Data\CourierApp.Data.csproj" />
+    <ProjectReference Include="..\CourierApp.MailService\CourierApp.MailService.csproj" />
   </ItemGroup>
 
   <ItemGroup>

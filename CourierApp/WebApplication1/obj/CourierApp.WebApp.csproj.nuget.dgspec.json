@@ -32,6 +32,9 @@
             "projectReferences": {
               "C:\\Users\\PatMat\\praca_dyplomowa\\CourierApp\\CourierApp.Data\\CourierApp.Data.csproj": {
                 "projectPath": "C:\\Users\\PatMat\\praca_dyplomowa\\CourierApp\\CourierApp.Data\\CourierApp.Data.csproj"
+              },
+              "C:\\Users\\PatMat\\praca_dyplomowa\\CourierApp\\CourierApp.MailService\\CourierApp.MailService.csproj": {
+                "projectPath": "C:\\Users\\PatMat\\praca_dyplomowa\\CourierApp\\CourierApp.MailService\\CourierApp.MailService.csproj"
               }
             }
           }

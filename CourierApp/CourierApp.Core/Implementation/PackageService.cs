@@ -14,10 +14,12 @@ namespace CourierApp.Core.Implementation
     public class PackageService : IPackageService
     {
         private readonly CourierAppDbContext _dbContext;
+        private readonly IReviewService _reviewService;
 
-        public PackageService(CourierAppDbContext dbContext)
+        public PackageService(CourierAppDbContext dbContext, IReviewService reviewService)
         {
             _dbContext = dbContext;
+            _reviewService = reviewService;
         }
 
         public async Task<IEnumerable<PackagesListViewModel>> GetPackages(int courierId)
@@ -38,6 +40,12 @@ namespace CourierApp.Core.Implementation
             package.Status = status.ToString();
 
             await _dbContext.SaveChangesAsync();
+
+            var link = _reviewService.CreateReviewLink(package.CourierId);
+
+            await _reviewService.CreateReviewLink(package.CourierId, link);
+            await _reviewService.SendReviewLink(package.CustomerEmail, link);
+
         }
     }
 }

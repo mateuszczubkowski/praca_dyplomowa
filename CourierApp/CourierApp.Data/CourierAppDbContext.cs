@@ -1,5 +1,6 @@
 ﻿using CourierApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace CourierApp.Data
 {
@@ -22,6 +23,8 @@ namespace CourierApp.Data
 
         public DbSet<Review> Reviews { get; set; }
 
+        public DbSet<ReviewLink> ReviewLinks { get; set; }
+
         private void DefineTables(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Courier>().HasKey(c => c.Id);
@@ -41,6 +44,9 @@ namespace CourierApp.Data
             modelBuilder.Entity<Review>().Property(r => r.Mark).IsRequired();
             modelBuilder.Entity<Review>().Property(r => r.Author).HasMaxLength(50).IsRequired();
 
+            modelBuilder.Entity<ReviewLink>().HasKey(rl => rl.Id);
+            modelBuilder.Entity<ReviewLink>().Property(rl => rl.Link).HasMaxLength(250).IsRequired();
+            modelBuilder.Entity<ReviewLink>().Property(rl => rl.CourierId).IsRequired();
         }
         private void SetRelationship(ModelBuilder modelBuilder)
         {
