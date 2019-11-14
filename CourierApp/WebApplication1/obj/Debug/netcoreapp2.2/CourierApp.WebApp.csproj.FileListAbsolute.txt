@@ -43,3 +43,15 @@ C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.dll
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.pdb
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Login.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Logout.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\_ViewImports.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\AccessDenied.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_StatusMessage.g.cshtml.cs
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Views\ApplicationUser\Create.g.cshtml.cs

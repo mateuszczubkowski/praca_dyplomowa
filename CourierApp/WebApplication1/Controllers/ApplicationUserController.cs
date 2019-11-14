@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels.ApplicationUser;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,32 +13,45 @@ namespace CourierApp.WebApp.Controllers
     public class ApplicationUserController : Controller
     {
         private UserManager<IdentityUser> _userManager;
-        private SignInManager<IdentityUser> _signInManager;
+        private IApplicationUserService _userService;
 
-        public ApplicationUserController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public ApplicationUserController(UserManager<IdentityUser> userManager, IApplicationUserService userService)
         {
-            _signInManager = signInManager;
             _userManager = userManager;
+            _userService = userService;
         }
 
-        //public async Task<IActionResult> Create(CreateApplicationUserViewModel model)
-        //{
-        //    var identityUser = new IdentityUser()
-        //    {
-        //        UserName = model.Email,
-        //        Email = model.Email
-        //    };
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var model = new CreateApplicationUserViewModel {Roles = _userService.GetRoles()};
 
-        //    var result = await _userManager.CreateAsync(identityUser, model.Password);
+            return View(model);
+        }
 
-        //    if (result.Succeeded)
-        //    {
-        //        var currentUser = await _userManager.FindByEmailAsync(identityUser.Email);
-                
-        //        await _userManager.AddToRoleAsync(currentUser, model.Role);
-        //    }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateApplicationUserViewModel model)
+        {
+            var identityUser = new IdentityUser()
+            {
+                UserName = model.Email,
+                Email = model.Email
+            };
+
+            var result = await _userManager.CreateAsync(identityUser, model.Password);
+
+            if (result.Succeeded)
+            {
+                var currentUser = await _userManager.FindByEmailAsync(identityUser.Email);
+
+                await _userManager.AddToRoleAsync(currentUser, model.Role);
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
 
 
-        //}
     }
 }
