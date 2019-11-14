@@ -42,3 +42,4 @@ C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.csproj.CopyComplete
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.dll
 C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\CourierApp.WebApp.pdb
+C:\Users\PatMat\praca_dyplomowa\CourierApp\WebApplication1\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs

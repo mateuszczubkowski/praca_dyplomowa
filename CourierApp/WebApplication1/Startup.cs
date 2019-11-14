@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -63,14 +64,40 @@ namespace CourierApp.WebApp
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-
             services.Configure<EmailConfig>(Configuration.GetSection("Email"));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<CourierAppIdentityDbContext>()
+                .AddDefaultTokenProviders();
+
+            //Info about Passwords Strength
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = true;
+            });
+
+            //The Account Login page's settings
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookies settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                options.LoginPath = "/Account/Login"; // You can type here you own LoginPath, if you don't set custom path, ASP.NET Core will default to /Account/Login
+                options.LogoutPath = "/Account/Logout"; // You can type here you own LogoutPath, if you don't set custom path, ASP.NET Core will default to /Account/Logout
+                options.AccessDeniedPath = "/Account/AccessDenied"; // You can type you own AccesDeniedPath, if you don't set custom path, ASP.NET Core will default to /Account/AccessDenied;
+                options.SlidingExpiration = true;
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider iServiceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -87,12 +114,44 @@ namespace CourierApp.WebApp
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            Seed.CreateRoles(iServiceProvider, Configuration).Wait();
+        }
+
+        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        {
+            // Initializing custom roles   
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            IdentityResult roleResult;
+
+            // Adding Admin Role
+            var roleCheck = await RoleManager.RoleExistsAsync("Admin");
+            if (!roleCheck)
+            {
+                //Create the roles and seed them to the database 
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+            roleCheck = await RoleManager.RoleExistsAsync("Courier");
+            if (!roleCheck)
+            {
+                //Create the roles and seed them to the database 
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Courier"));
+            }
+            roleCheck = await RoleManager.RoleExistsAsync("Manager");
+            if (!roleCheck)
+            {
+                //Create the roles and seed them to the database 
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Manager"));
+            }
         }
     }
 }
