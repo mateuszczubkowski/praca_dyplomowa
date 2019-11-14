@@ -5,8 +5,8 @@ C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.MailService\obj\Debug\nets
 C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.MailService\obj\Debug\netstandard2.0\CourierApp.MailService.AssemblyInfo.cs
 C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.MailService\bin\Debug\netstandard2.0\Microsoft.Extensions.Options.dll
 C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.MailService\bin\Debug\netstandard2.0\Microsoft.Extensions.Options.xml
-C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.MailService\obj\Debug\netstandard2.0\CourierApp.MailService.csprojAssemblyReference.cache
 C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.MailService\obj\Debug\netstandard2.0\CourierApp.MailService.csproj.CopyComplete
 C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.MailService\bin\Debug\netstandard2.0\CourierApp.MailService.pdb
 C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.MailService\obj\Debug\netstandard2.0\CourierApp.MailService.dll
 C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.MailService\obj\Debug\netstandard2.0\CourierApp.MailService.pdb
+C:\Users\PatMat\praca_dyplomowa\CourierApp\CourierApp.MailService\obj\Debug\netstandard2.0\CourierApp.MailService.csprojAssemblyReference.cache

@@ -39,10 +39,15 @@ namespace CourierApp.WebApp
             });
 
             var connectionString = Configuration.GetConnectionString("CourierAppContext");
+            var identityString = Configuration.GetConnectionString("IdentityAppContext");
             
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<CourierAppDbContext>(options =>
                     options.UseNpgsql(connectionString, dbBuilder => dbBuilder.MigrationsAssembly("CourierApp.WebApp")));
+
+            services.AddEntityFrameworkNpgsql()
+                .AddDbContext<CourierAppIdentityDbContext> (options =>
+                    options.UseNpgsql(identityString, dbBuilder => dbBuilder.MigrationsAssembly("CourierApp.WebApp")));
 
             services.AddScoped<ICourierManagementService, CourierManagementService>();
             services.AddScoped<IReviewService, ReviewService>();

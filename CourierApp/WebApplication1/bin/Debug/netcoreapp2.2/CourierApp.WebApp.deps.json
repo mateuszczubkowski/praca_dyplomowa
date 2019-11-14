@@ -973,6 +973,9 @@
         }
       },
       "CourierApp.Data/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Identity.Stores": "2.2.0"
+        },
         "runtime": {
           "CourierApp.Data.dll": {}
         },
