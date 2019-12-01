@@ -6,7 +6,7 @@ namespace CourierApp.Core.Implementation.Interfaces
 {
     public interface ICourierManagementService
     {
-        Task AddCourier(CreateCourierViewModel model);
+        Task<int> AddCourier(CreateCourierViewModel model);
 
         Task<IEnumerable<CourierListItemViewModel>> GetCouriersList();
 

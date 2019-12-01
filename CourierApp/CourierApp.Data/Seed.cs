@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using CourierApp.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +13,7 @@ namespace CourierApp.Data
         {
             //adding customs roles
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             string[] roleNames = { "Admin", "Manager", "Courier" };
             IdentityResult roleResult;
 
@@ -27,7 +28,7 @@ namespace CourierApp.Data
             }
 
             // creating a super user who could maintain the web app
-            var poweruser = new IdentityUser
+            var poweruser = new ApplicationUser()
             {
                 UserName = configuration.GetSection("UserSettings")["UserEmail"],
                 Email = configuration.GetSection("AppSetUserSettingstings")["UserEmail"]

@@ -20,7 +20,7 @@ namespace CourierApp.Core.Implementation
             _reviewService = reviewService;
         }
 
-        public async Task AddCourier(CreateCourierViewModel model)
+        public async Task<int> AddCourier(CreateCourierViewModel model)
         {
             var courier = new Courier
             {
@@ -33,6 +33,8 @@ namespace CourierApp.Core.Implementation
 
             await _dbContext.Couriers.AddAsync(courier);
             await _dbContext.SaveChangesAsync();
+
+            return courier.Id;
         }
 
         public async Task<IEnumerable<CourierListItemViewModel>> GetCouriersList()

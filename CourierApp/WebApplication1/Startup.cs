@@ -6,6 +6,7 @@ using AutoMapper;
 using CourierApp.Core.Implementation;
 using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Data;
+using CourierApp.Data.Models;
 using CourierApp.MailService;
 using CourierApp.WebApp.Mapper;
 using Microsoft.AspNetCore.Builder;
@@ -67,7 +68,7 @@ namespace CourierApp.WebApp
 
             services.Configure<EmailConfig>(Configuration.GetSection("Email"));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<CourierAppIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -90,7 +91,6 @@ namespace CourierApp.WebApp
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
                 options.LoginPath = "/Account/Login"; // You can type here you own LoginPath, if you don't set custom path, ASP.NET Core will default to /Account/Login
                 options.LogoutPath = "/Account/Logout"; // You can type here you own LogoutPath, if you don't set custom path, ASP.NET Core will default to /Account/Logout
-                options.AccessDeniedPath = "/Account/AccessDenied"; // You can type you own AccesDeniedPath, if you don't set custom path, ASP.NET Core will default to /Account/AccessDenied;
                 options.SlidingExpiration = true;
             });
 
@@ -125,34 +125,6 @@ namespace CourierApp.WebApp
             });
 
             Seed.CreateRoles(iServiceProvider, Configuration).Wait();
-        }
-
-        private async Task CreateUserRoles(IServiceProvider serviceProvider)
-        {
-            // Initializing custom roles   
-            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-            IdentityResult roleResult;
-
-            // Adding Admin Role
-            var roleCheck = await RoleManager.RoleExistsAsync("Admin");
-            if (!roleCheck)
-            {
-                //Create the roles and seed them to the database 
-                roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
-            }
-            roleCheck = await RoleManager.RoleExistsAsync("Courier");
-            if (!roleCheck)
-            {
-                //Create the roles and seed them to the database 
-                roleResult = await RoleManager.CreateAsync(new IdentityRole("Courier"));
-            }
-            roleCheck = await RoleManager.RoleExistsAsync("Manager");
-            if (!roleCheck)
-            {
-                //Create the roles and seed them to the database 
-                roleResult = await RoleManager.CreateAsync(new IdentityRole("Manager"));
-            }
         }
     }
 }
