@@ -5,6 +5,7 @@ using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels.Courier;
 using CourierApp.Data;
 using CourierApp.Data.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace CourierApp.Core.Implementation
@@ -66,6 +67,14 @@ namespace CourierApp.Core.Implementation
                     SecondName = x.SecondName,
                     ReviewsList = _reviewService.GetCourierReviews(x.Id)
                 }).FirstOrDefaultAsync();
+        }
+
+        public IEnumerable<SelectListItem> GetCouriers()
+        {
+            var couriers = _dbContext.Couriers.Select(x => new SelectListItem($"{x.FirstName} {x.SecondName}", x.Id.ToString()))
+                .AsNoTracking().ToList();
+
+            return couriers;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
+    var user = await userManager.GetUserAsync(User);
 }
 
     <div class="text-center">
@@ -7,5 +9,6 @@
         <h2>Kurier</h2>
         <a class="btn btn-success" asp-controller="Courier" asp-action="Create">Dodaj</a>
         <a class="btn btn-success" asp-controller="Courier" asp-action="CourierList">Lista kurierów</a>
-        <a class="btn btn-danger" asp-controller="Package" asp-action="PackageList" asp-route-id="2">Lista paczek</a>
+        <a class="btn btn-danger" asp-controller="Package" asp-action="PackageList" asp-route-id="@user?.CourierId">Lista paczek</a>
+        <a class="btn btn-danger" asp-controller="Package" asp-action="Create">Dodaj paczkę</a>
     </div>

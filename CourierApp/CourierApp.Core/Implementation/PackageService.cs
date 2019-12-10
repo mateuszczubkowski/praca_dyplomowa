@@ -7,6 +7,7 @@ using CourierApp.Core.Enums;
 using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels.Packages;
 using CourierApp.Data;
+using CourierApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CourierApp.Core.Implementation
@@ -46,6 +47,27 @@ namespace CourierApp.Core.Implementation
             await _reviewService.CreateReviewLink(package.CourierId, link);
             await _reviewService.SendReviewLink(package.CustomerEmail, link);
 
+        }
+
+        public async Task Create(CreatePackageViewModel model)
+        {
+            var package = new Package()
+            {
+                Address = model.Address,
+                CourierId = model.CourierId,
+                CustomerEmail = model.Email,
+                Status = PackageStatus.InMagazine.ToString()
+            };
+
+            try
+            {
+                await _dbContext.Packages.AddAsync(package);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+
+            }
         }
     }
 }

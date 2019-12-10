@@ -1,2 +1,7 @@
-﻿@using NonFactors.Mvc.Grid;
+﻿@using CourierApp.Data.Models
+@using NonFactors.Mvc.Grid;
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<ApplicationUser> userManager;
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

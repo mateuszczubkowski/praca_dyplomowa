@@ -12,5 +12,7 @@ namespace CourierApp.Core.Implementation.Interfaces
         Task<IEnumerable<PackagesListViewModel>> GetPackages(int courierId);
 
         Task ChangeStatus(int id, PackageStatus status);
+
+        Task Create(CreatePackageViewModel model);
     }
 }
