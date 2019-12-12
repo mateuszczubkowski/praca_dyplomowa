@@ -23,22 +23,8 @@
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <div class="row mt-1 text-right">
-                        <div class="col-md-4  py-1">
-                            <h6><label asp-for="Roles"></label></h6>
-                        </div>
-                        <div class="col-md-8">
-                            @Html.DropDownListFor(m => m.Role, Model.Roles, "Rola użytkownika", new { @class = "form-control" })
-                        </div>
-                    </div>
-                    @*<div class="row mt-1 text-right">
-                        <div class="col-md-4  py-1">
-                            <h6><label asp-for="Roles"></label></h6>
-                        </div>
-                        <div class="col-md-8">
-                            <select asp-for="Role" asp-items="Model.Roles"></select>
-                        </div>
-                    </div>*@
+                    <label asp-for="Role"></label>
+                    @Html.DropDownListFor(m => m.Role, Model.Roles, "Rola użytkownika", new {@class = "form-control"})
                 </div>
                 <div id="courierData">
                     <div class="form-group">

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<CourierApp.Core.ViewModels.Review.ReviewListItemViewModel>
+
+@{
+    ViewData["Title"] = "Moje paczki";
+}
+
+@(Html
+      .Grid(Model)
+      .Build(columns =>
+      {
+          columns.Add(model => model.Author).Titled("E-mail autora");
+          columns.Add(model => model.Content).Titled("Treść");
+          columns.Add(model => model.Mark).Titled("Ocena");
+      })
+      .Empty("Brak danych")
+      .Filterable()
+      .Sortable()
+      .Pageable()
+)

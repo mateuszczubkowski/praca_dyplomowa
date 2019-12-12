@@ -14,7 +14,7 @@ namespace CourierApp.Data
             //adding customs roles
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            string[] roleNames = { "Admin", "Manager", "Courier" };
+            string[] roleNames = { "Admin", "Manager", "Courier", "Warehouseman" };
             IdentityResult roleResult;
 
             foreach (var roleName in roleNames)

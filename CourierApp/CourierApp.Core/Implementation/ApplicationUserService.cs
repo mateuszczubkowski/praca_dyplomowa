@@ -16,7 +16,7 @@ namespace CourierApp.Core.Implementation
 
             foreach (ApplicationRoles role in (ApplicationRoles[]) Enum.GetValues(typeof(ApplicationRoles)))
             {
-                roles.Add(new SelectListItem(role.ToString(), role.ToString()));
+                roles.Add(new SelectListItem(role.GetDisplayName(), role.ToString()));
             }
 
             return roles;

@@ -57,22 +57,24 @@ namespace CourierApp.Core.Implementation
             return couriers;
         }
 
-        public async Task<CourierReviewsDetailsViewModel> GetCourier(int id)
-        {
-            return await _dbContext.Couriers.AsNoTracking()
-                .Where(x => x.Id == id)
-                .Select(x => new CourierReviewsDetailsViewModel()
-                {
-                    FirstName = x.FirstName,
-                    SecondName = x.SecondName,
-                    ReviewsList = _reviewService.GetCourierReviews(x.Id)
-                }).FirstOrDefaultAsync();
-        }
+        //public async Task<CourierReviewsDetailsViewModel> GetCourier(int id)
+        //{
+        //    return await _dbContext.Couriers.AsNoTracking()
+        //        .Where(x => x.Id == id)
+        //        .Select(x => new CourierReviewsDetailsViewModel()
+        //        {
+        //            FirstName = x.FirstName,
+        //            SecondName = x.SecondName,
+        //            ReviewsList = _reviewService.GetCourierReviews(x.Id)
+        //        }).FirstOrDefaultAsync();
+        //}
 
         public IEnumerable<SelectListItem> GetCouriers()
         {
-            var couriers = _dbContext.Couriers.Select(x => new SelectListItem($"{x.FirstName} {x.SecondName}", x.Id.ToString()))
+            var couriers = _dbContext.Couriers.Select(x => new SelectListItem($"{x.FirstName} {x.SecondName}", x.Id.ToString(), false))
                 .AsNoTracking().ToList();
+
+            couriers.Add(new SelectListItem("Brak kuriera", "0", true));
 
             return couriers;
         }

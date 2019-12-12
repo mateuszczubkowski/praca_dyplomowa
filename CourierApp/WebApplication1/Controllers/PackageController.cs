@@ -27,6 +27,13 @@ namespace CourierApp.WebApp.Controllers
             return View(result);
         }
 
+        public async Task<IActionResult> AllPackageList()
+        {
+            var result = await _packageService.GetAllPackages();
+
+            return View(result);
+        }
+
         public async Task<IActionResult> ChangeStatus(int id)
         {
             await _packageService.ChangeStatus(id, PackageStatus.Delivered);

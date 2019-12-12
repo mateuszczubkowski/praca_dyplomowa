@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CourierApp.Core.ViewModels.Packages.PackagesListViewModel>
+﻿@model IEnumerable<CourierApp.Core.ViewModels.Packages.AllPackagesListViewModel>
 
 @{
     ViewData["Title"] = "Moje paczki";
@@ -9,13 +9,12 @@
       .Build(columns =>
       {
           columns.Add(model => model.CustomerEmail).Titled("E-mail");
+          columns.Add(model => model.Courier).Titled("Kurier");
           columns.Add(model => model.Address).Titled("Adres dostawy");
           columns.Add(model => model.Status).Titled("Status");
-          columns.Add(model => Html.ActionLink("Doręczono", "ChangeStatus", "Package", new { id = model.Id }));
       })
       .Empty("Brak danych")
       .Filterable()
       .Sortable()
       .Pageable()
-)
-
+      )

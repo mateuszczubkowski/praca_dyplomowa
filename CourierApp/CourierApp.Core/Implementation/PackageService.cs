@@ -44,7 +44,7 @@ namespace CourierApp.Core.Implementation
 
             var link = _reviewService.CreateReviewLink(package.CourierId);
 
-            await _reviewService.CreateReviewLink(package.CourierId, link);
+            await _reviewService.CreateReviewLink(package.CourierId, link, package.CustomerEmail);
             await _reviewService.SendReviewLink(package.CustomerEmail, link);
 
         }
@@ -68,6 +68,19 @@ namespace CourierApp.Core.Implementation
             {
 
             }
+        }
+
+        public async Task<IEnumerable<AllPackagesListViewModel>> GetAllPackages()
+        {
+            return await _dbContext.Packages.AsNoTracking().Include(x => x.Courier).Select(x =>
+                new AllPackagesListViewModel
+                {
+                    Address = x.Address,
+                    Courier = x.Courier != null ? $"{x.Courier.FirstName} {x.Courier.SecondName}" : "Brak kuriera",
+                    CustomerEmail = x.CustomerEmail,
+                    Id = x.Id,
+                    Status = x.Status
+                }).ToListAsync();
         }
     }
 }

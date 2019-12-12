@@ -8,9 +8,9 @@
           columns.Add(model => model.FirstName).Titled("Imię");
           columns.Add(model => model.Email).Titled("Email");
           columns.Add(model => model.PhoneNumber).Titled("Numer telefonu");
-          columns.Add(model => model.Mark).Titled("Średnia ocena");
+          columns.Add(model => Html.ActionLink(model.Mark.ToString(), "ReviewList", "Review", new { id = model.Id })).Titled("Średnia ocen");
       })
-      .Empty("No data found")
+      .Empty("Brak danych")
       .Filterable()
       .Sortable()
       .Pageable()

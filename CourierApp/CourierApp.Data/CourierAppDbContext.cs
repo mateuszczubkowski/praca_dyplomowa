@@ -47,6 +47,7 @@ namespace CourierApp.Data
             modelBuilder.Entity<ReviewLink>().HasKey(rl => rl.Id);
             modelBuilder.Entity<ReviewLink>().Property(rl => rl.Link).HasMaxLength(250).IsRequired();
             modelBuilder.Entity<ReviewLink>().Property(rl => rl.CourierId).IsRequired();
+            modelBuilder.Entity<ReviewLink>().Property(rl => rl.Author).IsRequired();
         }
         private void SetRelationship(ModelBuilder modelBuilder)
         {

@@ -11,5 +11,7 @@ namespace CourierApp.Data.Models
         public string Link { get; set; }
 
         public int CourierId { get; set; }
+
+        public string Author { get; set; }
     }
 }

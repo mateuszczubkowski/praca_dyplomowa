@@ -30,15 +30,15 @@ namespace CourierApp.Core.Implementation
             return reviews.Count != 0 ? Convert.ToDecimal(reviews.Average()) : 0;
         }
 
-        public IEnumerable<ReviewListItemViewModel> GetCourierReviews(int id)
+        public async Task<IEnumerable<ReviewListItemViewModel>> GetCourierReviews(int id)
         {
-            return _dbContext.Reviews.AsNoTracking().Where(x => x.CourierId == id).Select(x =>
+            return await _dbContext.Reviews.AsNoTracking().Where(x => x.CourierId == id).Select(x =>
                 new ReviewListItemViewModel()
                 {
                     Author = x.Author,
                     Content = x.Content,
                     Mark = x.Mark
-                }).ToList();
+                }).ToListAsync();
         }
 
         public string CreateReviewLink(int courierId)
@@ -48,12 +48,13 @@ namespace CourierApp.Core.Implementation
             return $"{unixTimestamp.ToString()}{courierId.ToString()}";
         }
 
-        public async Task CreateReviewLink(int courierId, string reviewLink)
+        public async Task CreateReviewLink(int courierId, string reviewLink, string email)
         {
             var newReviewLink = new ReviewLink
             {
                 CourierId = courierId,
-                Link = reviewLink
+                Link = reviewLink,
+                Author = email
             };
 
             await _dbContext.ReviewLinks.AddAsync(newReviewLink);

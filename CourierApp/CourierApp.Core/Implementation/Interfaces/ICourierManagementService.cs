@@ -11,7 +11,7 @@ namespace CourierApp.Core.Implementation.Interfaces
 
         Task<IEnumerable<CourierListItemViewModel>> GetCouriersList();
 
-        Task<CourierReviewsDetailsViewModel> GetCourier(int id);
+        //Task<CourierReviewsDetailsViewModel> GetCourier(int id);
 
         IEnumerable<SelectListItem> GetCouriers();
     }

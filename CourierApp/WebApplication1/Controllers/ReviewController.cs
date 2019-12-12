@@ -32,5 +32,12 @@ namespace CourierApp.WebApp.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public async Task<IActionResult> ReviewList(int id)
+        {
+            var result = await _reviewService.GetCourierReviews(id);
+
+            return View(result);
+        }
     }
 }
