@@ -22,7 +22,11 @@ namespace CourierApp.WebApp.Controllers
 
         public async Task<IActionResult> PackageList(int id)
         {
-            var result = await _packageService.GetPackages(id);
+            var result = new GetPackagesListsViewModel()
+            {
+                Delivered = await _packageService.GetPackages(id, PackageStatus.Delivered.ToString()),
+                InProgress = await _packageService.GetPackages(id, PackageStatus.InProgress.ToString())
+            };
 
             return View(result);
         }
@@ -34,11 +38,11 @@ namespace CourierApp.WebApp.Controllers
             return View(result);
         }
 
-        public async Task<IActionResult> ChangeStatus(int id)
+        public async Task<IActionResult> ChangeStatus(int id, int courierId)
         {
             await _packageService.ChangeStatus(id, PackageStatus.Delivered);
 
-            return RedirectToAction("PackageList");
+            return RedirectToAction("PackageList", new { id = courierId });
         }
 
         [HttpGet]

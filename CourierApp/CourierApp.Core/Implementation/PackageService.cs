@@ -23,9 +23,9 @@ namespace CourierApp.Core.Implementation
             _reviewService = reviewService;
         }
 
-        public async Task<IEnumerable<PackagesListViewModel>> GetPackages(int courierId)
+        public async Task<IEnumerable<PackagesListViewModel>> GetPackages(int courierId, string status)
         {
-            return await _dbContext.Packages.Where(x => x.CourierId == courierId).Select(x => new PackagesListViewModel
+            return await _dbContext.Packages.Where(x => x.CourierId == courierId && x.Status == status).Select(x => new PackagesListViewModel
             {
                 Address = x.Address,
                 CustomerEmail = x.CustomerEmail,

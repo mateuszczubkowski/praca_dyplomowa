@@ -1,21 +1,12 @@
-﻿@model IEnumerable<CourierApp.Core.ViewModels.Packages.PackagesListViewModel>
+﻿@using Org.BouncyCastle.Math.EC.Rfc7748
+@model CourierApp.Core.ViewModels.Packages.GetPackagesListsViewModel
 
 @{
     ViewData["Title"] = "Moje paczki";
 }
 
-@(Html
-      .Grid(Model)
-      .Build(columns =>
-      {
-          columns.Add(model => model.CustomerEmail).Titled("E-mail");
-          columns.Add(model => model.Address).Titled("Adres dostawy");
-          columns.Add(model => model.Status).Titled("Status");
-          columns.Add(model => Html.ActionLink("Doręczono", "ChangeStatus", "Package", new { id = model.Id }));
-      })
-      .Empty("Brak danych")
-      .Filterable()
-      .Sortable()
-      .Pageable()
-)
-
+<h1>Lista paczek</h1>
+<br />
+@{ Html.RenderPartial("_InProgressPackageList", Model.InProgress); }
+<br/><br />
+@{ Html.RenderPartial("_DeliveredPackageList", Model.Delivered); }

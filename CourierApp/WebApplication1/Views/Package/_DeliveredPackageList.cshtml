@@ -1,0 +1,21 @@
+﻿@model IEnumerable<CourierApp.Core.ViewModels.Packages.PackagesListViewModel>
+
+@{
+    ViewData["Title"] = "Doręczone przesyłki";
+}
+
+<h3>Doręczone przesyłki:</h3>
+
+@(Html
+      .Grid(Model)
+      .Build(columns =>
+      {
+          columns.Add(model => model.CustomerEmail).Titled("E-mail");
+          columns.Add(model => model.Address).Titled("Adres dostawy");
+          columns.Add(model => model.Status).Titled("Status");
+      })
+      .Empty("Brak danych")
+      .Filterable()
+      .Sortable()
+      .Pageable()
+)

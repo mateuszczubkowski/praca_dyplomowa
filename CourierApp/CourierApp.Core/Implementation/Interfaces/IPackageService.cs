@@ -9,7 +9,7 @@ namespace CourierApp.Core.Implementation.Interfaces
 {
     public interface IPackageService
     {
-        Task<IEnumerable<PackagesListViewModel>> GetPackages(int courierId);
+        Task<IEnumerable<PackagesListViewModel>> GetPackages(int courierId, string status);
 
         Task ChangeStatus(int id, PackageStatus status);
 
