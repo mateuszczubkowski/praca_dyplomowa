@@ -1,0 +1,86 @@
+﻿@model CourierApp.Core.ViewModels.Packages.CheckPackageStatusViewModel
+
+@{
+    ViewData["Title"] = "Śledzenie paczki";
+}
+
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-8 offset-md-2">
+                @if (Model.Status == 99)
+                {
+                    <div class="row mb-3">
+                        <div class="col-md-12 h3 text-center">
+                            Wprowadź dane, aby sprawdzić status swojej przesyłki.
+                        </div>
+                    </div>
+                }
+                @if (Model.Status == 0)
+                {
+                    <div class="row mb-3">
+                        <div class="col-md-12 h3 text-center">
+                            Niestety nie znaleźliśmy przesyłki o takich danych. Sprawdź wprowadzone informacje i spróbuj jeszcze raz.
+                        </div>
+                    </div>
+                }
+                @if (Model.Status == 99 || Model.Status == 0)
+                {
+                    <div class="row ">
+                        <div class="col-md-12 text-left ">
+                            @await Html.PartialAsync("_ValidationSummary")
+                            <form asp-controller="Package" asp-action="CheckStatus" method="post" autocomplete="on">
+                                <div class="row pt-1 ">
+                                    <div class="col-md-3 text-right py-2">
+                                        <label asp-for="Mail"></label> *
+                                    </div>
+                                    <div class="col-md-9 ">
+                                        <input type="text" asp-for="Mail" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="row pt-1 ">
+                                    <div class="col-md-3 text-right py-2">
+                                        <label asp-for="Id"></label> *
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input asp-for="Id" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-1">
+                                    <div class="col-md offset-md-3 text-right">
+                                        <input type="submit" value="Wyślij dane" class="btn btn-success w-100" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                }
+                @if (Model.Status == 1)
+                {
+                    <div class="row mb-3">
+                        <div class="col-md-12 h3 text-center">
+                            Twoja paczka wciąż znajduje się w naszym magazynie i oczekuje na odebranie przez kuriera.
+                        </div>
+                    </div>
+                }
+                @if (Model.Status == 2)
+                {
+                    <div class="row mb-3">
+                        <div class="col-md-12 h3 text-center">
+                            Twoja paczka jest już u kuriera. Oto jego lokalizacja na mapie:
+                        </div>
+                    </div>
+                }
+                @if (Model.Status == 3)
+                {
+                    <div class="row mb-3">
+                        <div class="col-md-12 h3 text-center">
+                            Twoja paczka została już doręczona! Jeżeli to nie Ty ją odebrałeś, skontaktuj się z nami.
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+

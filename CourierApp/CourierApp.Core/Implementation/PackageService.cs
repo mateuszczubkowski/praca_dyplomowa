@@ -9,6 +9,7 @@ using CourierApp.Core.ViewModels.Packages;
 using CourierApp.Data;
 using CourierApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Bcpg;
 
 namespace CourierApp.Core.Implementation
 {
@@ -81,6 +82,36 @@ namespace CourierApp.Core.Implementation
                     Id = x.Id,
                     Status = x.Status
                 }).ToListAsync();
+        }
+
+        public async Task<int> CheckStatus(CheckPackageStatusViewModel model)
+        {
+            var package = await _dbContext.Packages.AsNoTracking()
+                .FirstOrDefaultAsync(p => p.Id == model.Id && p.CustomerEmail == model.Mail);
+
+            if (package == null)
+            {
+                return 0;
+            }
+            else
+            {
+                if (package.Status == PackageStatus.InMagazine.ToString())
+                {
+                    return 1;
+                }
+                else if (package.Status == PackageStatus.InProgress.ToString())
+                {
+                    return 2;
+                }
+                else if (package.Status == PackageStatus.Delivered.ToString())
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }

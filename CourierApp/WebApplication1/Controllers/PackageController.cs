@@ -63,5 +63,21 @@ namespace CourierApp.WebApp.Controllers
 
             return RedirectToAction("Index","Home");
         }
+
+        [HttpGet]
+        public IActionResult CheckStatus()
+        {
+            var model = new CheckPackageStatusViewModel() {Status = 99};
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CheckStatus(CheckPackageStatusViewModel model)
+        {
+            model.Status = await _packageService.CheckStatus(model);
+
+            return View(model);
+        }
     }
 }
