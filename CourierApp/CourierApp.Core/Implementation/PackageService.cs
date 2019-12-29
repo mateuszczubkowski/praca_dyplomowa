@@ -35,6 +35,18 @@ namespace CourierApp.Core.Implementation
             }).AsNoTracking().ToListAsync();
         }
 
+        public IEnumerable<PackageWithoutCourierViewModel> GetPackages()
+        {
+            return _dbContext.Packages.Where(x => x.CourierId == 0 && x.Status == PackageStatus.InMagazine.ToString()).Select(x => new PackageWithoutCourierViewModel()
+            {
+                Address = x.Address,
+                CustomerEmail = x.CustomerEmail,
+                Id = x.Id,
+                Status = x.Status,
+                Check = false
+            }).AsNoTracking().ToList();
+        }
+
         public async Task ChangeStatus(int id, PackageStatus status)
         {
             var package = await _dbContext.Packages.FirstOrDefaultAsync(x => x.Id == id);
@@ -110,6 +122,32 @@ namespace CourierApp.Core.Implementation
                 else
                 {
                     return 0;
+                }
+            }
+        }
+
+        public async Task ChangeCourier(ChangePackageCourierViewModel model)
+        {
+            var packages = new List<PackageWithoutCourierViewModel>();
+
+            Package package;
+                
+            foreach (var p in model.Packages)
+            {
+                if (p.Check == true)
+                {
+                    packages.Add(p);
+                }
+            }
+
+            foreach (var p in packages)
+            {
+                package = await _dbContext.Packages.FirstOrDefaultAsync(x => x.Id == p.Id);
+                if (package != null)
+                {
+                    package.CourierId = model.CourierId;
+
+                    await _dbContext.SaveChangesAsync();
                 }
             }
         }

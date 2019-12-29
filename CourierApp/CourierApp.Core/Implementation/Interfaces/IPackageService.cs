@@ -11,6 +11,8 @@ namespace CourierApp.Core.Implementation.Interfaces
     {
         Task<IEnumerable<PackagesListViewModel>> GetPackages(int courierId, string status);
 
+        IEnumerable<PackageWithoutCourierViewModel> GetPackages();
+
         Task ChangeStatus(int id, PackageStatus status);
 
         Task Create(CreatePackageViewModel model);
@@ -18,5 +20,7 @@ namespace CourierApp.Core.Implementation.Interfaces
         Task<IEnumerable<AllPackagesListViewModel>> GetAllPackages();
 
         Task<int> CheckStatus(CheckPackageStatusViewModel model);
+
+        Task ChangeCourier(ChangePackageCourierViewModel model);
     }
 }

@@ -79,5 +79,25 @@ namespace CourierApp.WebApp.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult ChangePackageCourier()
+        {
+            var model = new ChangePackageCourierViewModel()
+            {
+                Couriers = _courierService.GetCouriers(),
+                Packages = _packageService.GetPackages()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePackageCourier(ChangePackageCourierViewModel model)
+        {
+            await _packageService.ChangeCourier(model);
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
