@@ -3,15 +3,17 @@ using System;
 using CourierApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CourierApp.WebApp.Migrations
 {
     [DbContext(typeof(CourierAppDbContext))]
-    partial class CourierAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200102111329_nullable courierid")]
+    partial class nullablecourierid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

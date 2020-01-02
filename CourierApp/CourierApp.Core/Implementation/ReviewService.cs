@@ -41,18 +41,18 @@ namespace CourierApp.Core.Implementation
                 }).ToListAsync();
         }
 
-        public string CreateReviewLink(int courierId)
+        public string CreateReviewLink(int? courierId)
         {
             Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 
             return $"{unixTimestamp.ToString()}{courierId.ToString()}";
         }
 
-        public async Task CreateReviewLink(int courierId, string reviewLink, string email)
+        public async Task CreateReviewLink(int? courierId, string reviewLink, string email)
         {
             var newReviewLink = new ReviewLink
             {
-                CourierId = courierId,
+                CourierId = Convert.ToInt32(courierId),
                 Link = reviewLink,
                 Author = email
             };

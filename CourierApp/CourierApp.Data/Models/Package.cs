@@ -10,7 +10,7 @@
 
         public string Status { get; set; }
 
-        public int CourierId { get; set; }
+        public int? CourierId { get; set; }
 
         public Courier Courier { get; set; }
     }
