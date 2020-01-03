@@ -36,8 +36,8 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                              <a class="nav-link text-dark" asp-area="" asp-controller="ApplicationUser" asp-action="Create">Dodaj użytkownika</a>
-                          </li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ApplicationUser" asp-action="Create">Dodaj użytkownika</a>
+                            </li>
 
                         }
                     </ul>
@@ -75,10 +75,41 @@
                 crossorigin="anonymous"
                 integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
         </script>
-    </environment>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/mvc-grid/mvc-grid.js"></script>
+</environment>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
 
+<script>
+
+    var userRole = '@(User.IsInRole("Courier") ? "true" : "false")';
+    console.log(userRole);
+    var ajaxUrl = '@Url.Action("PostLocation", "Courier")';
+    if (userRole) {
+        setInterval(function() {
+                if (navigator.geolocation) {
+
+                    navigator.geolocation.getCurrentPosition(function(position) {
+
+                        var userCoords = {
+                            "Latitude": position.coords.latitude,
+                            "Longitude": position.coords.longitude,
+                        }
+                        console.log(userCoords);
+                        $.ajax({
+                            url: ajaxUrl,
+                            data: JSON.stringify(userCoords),
+                            contentType: 'application/json',
+                            traditional: true,
+                            type: 'POST'
+                        });
+                    });
+                }
+
+            },
+            60 * 1000);
+    }
+
+</script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

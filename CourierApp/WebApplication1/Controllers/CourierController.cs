@@ -55,5 +55,14 @@ namespace CourierApp.WebApp.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public void PostLocation([FromBody]double lat/*, [FromBody]double lng*/)
+        {
+            var x = lat;
+
+            //var y = lng;
+        }
+
     }
 }
