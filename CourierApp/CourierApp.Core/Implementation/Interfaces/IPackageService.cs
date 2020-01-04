@@ -19,7 +19,7 @@ namespace CourierApp.Core.Implementation.Interfaces
 
         Task<IEnumerable<AllPackagesListViewModel>> GetAllPackages();
 
-        Task<int> CheckStatus(CheckPackageStatusViewModel model);
+        Task<CheckPackageStatusViewModel> CheckStatus(CheckPackageStatusViewModel model);
 
         Task ChangeCourier(ChangePackageCourierViewModel model);
     }

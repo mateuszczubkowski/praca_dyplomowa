@@ -14,5 +14,9 @@ namespace CourierApp.Core.ViewModels.Packages
         public int Id { get; set; }
 
         public int Status { get; set; }
+
+        public double Latitude { get; set; }
+
+        public double Longitude { get; set; }
     }
 }

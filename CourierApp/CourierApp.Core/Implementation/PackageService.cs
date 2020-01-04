@@ -17,11 +17,13 @@ namespace CourierApp.Core.Implementation
     {
         private readonly CourierAppDbContext _dbContext;
         private readonly IReviewService _reviewService;
+        private readonly IGeolocationService _gpsService;
 
-        public PackageService(CourierAppDbContext dbContext, IReviewService reviewService)
+        public PackageService(CourierAppDbContext dbContext, IReviewService reviewService, IGeolocationService gpsService)
         {
             _dbContext = dbContext;
             _reviewService = reviewService;
+            _gpsService = gpsService;
         }
 
         public async Task<IEnumerable<PackagesListViewModel>> GetPackages(int courierId, string status)
@@ -103,34 +105,36 @@ namespace CourierApp.Core.Implementation
                 }).ToListAsync();
         }
 
-        public async Task<int> CheckStatus(CheckPackageStatusViewModel model)
+        public async Task<CheckPackageStatusViewModel> CheckStatus(CheckPackageStatusViewModel model)
         {
             var package = await _dbContext.Packages.AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == model.Id && p.CustomerEmail == model.Mail);
 
             if (package == null)
             {
-                return 0;
+                model.Status =  0;
             }
             else
             {
                 if (package.Status == PackageStatus.InMagazine.ToString())
                 {
-                    return 1;
+                    model.Status = 1;
                 }
                 else if (package.Status == PackageStatus.InProgress.ToString())
                 {
-                    return 2;
+                    model = await _gpsService.GetLocation(model);
                 }
                 else if (package.Status == PackageStatus.Delivered.ToString())
                 {
-                    return 3;
+                    model.Status = 3;
                 }
                 else
                 {
-                    return 0;
+                    model.Status = 0;
                 }
             }
+
+            return model;
         }
 
         public async Task ChangeCourier(ChangePackageCourierViewModel model)

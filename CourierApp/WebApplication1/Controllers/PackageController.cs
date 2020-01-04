@@ -75,9 +75,9 @@ namespace CourierApp.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> CheckStatus(CheckPackageStatusViewModel model)
         {
-            model.Status = await _packageService.CheckStatus(model);
+            var result = await _packageService.CheckStatus(model);
 
-            return View(model);
+            return View(result);
         }
 
         [HttpGet]

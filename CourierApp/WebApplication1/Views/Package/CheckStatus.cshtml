@@ -46,7 +46,7 @@
                                         <input asp-for="Id" type="text" class="form-control" />
                                     </div>
                                 </div>
-                                
+
                                 <div class="row mt-1">
                                     <div class="col-md offset-md-3 text-right">
                                         <input type="submit" value="Wyślij dane" class="btn btn-success w-100" />
@@ -69,6 +69,7 @@
                     <div class="row mb-3">
                         <div class="col-md-12 h3 text-center">
                             Twoja paczka jest już u kuriera. Oto jego lokalizacja na mapie:
+                            <br> @Model.Longitude <br> @Model.Latitude
                         </div>
                     </div>
                 }
@@ -77,6 +78,14 @@
                     <div class="row mb-3">
                         <div class="col-md-12 h3 text-center">
                             Twoja paczka została już doręczona! Jeżeli to nie Ty ją odebrałeś, skontaktuj się z nami.
+                        </div>
+                    </div>
+                }
+                @if (Model.Status == 4)
+                {
+                    <div class="row mb-3">
+                        <div class="col-md-12 h3 text-center">
+                            Twoja paczka jest już u kuriera. Niestety, jego lokalizacja jest niedostępna.
                         </div>
                     </div>
                 }

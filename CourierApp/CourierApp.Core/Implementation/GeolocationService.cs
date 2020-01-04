@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels;
+using CourierApp.Core.ViewModels.Packages;
 using CourierApp.Data;
 using CourierApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
@@ -34,9 +35,32 @@ namespace CourierApp.Core.Implementation
             }
         }
 
-        public async Task GetLocation(GeolocationViewModel model)
+        public async Task<CheckPackageStatusViewModel> GetLocation(CheckPackageStatusViewModel model)
         {
-            throw new NotImplementedException();
+            var package = await _dbContext.Packages.AsNoTracking().FirstOrDefaultAsync(p => p.Id == model.Id);
+            if (package == null)
+            {
+                model.Status = 0;
+
+                return model;
+            }
+
+            var location = await _dbContext.CourierPositions.AsNoTracking().FirstOrDefaultAsync(x => x.CourierId == package.CourierId);
+
+            if (location == null || (DateTime.Now - location.Date).Hours >= 1)
+            {
+                model.Status = 4;
+
+                return model;
+            }
+            else
+            {
+                model.Longitude = location.Longitude;
+                model.Latitude = location.Latitude;
+                model.Status = 2;
+
+                return model;
+            }
         }
 
         private async Task CreateNewLocation(GeolocationViewModel model)
