@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,13 +12,19 @@ namespace CourierApp.WebApp.Controllers
     [ApiController]
     public class GeolocationController : Controller
     {
+        private readonly IGeolocationService _gpsService;
+
+        public GeolocationController(IGeolocationService gpsService)
+        {
+            _gpsService = gpsService;
+        }
+
+
         [HttpPost]
         [Route("Location")]
-        public async Task PostLocation([FromBody] GeolocationViewModel position)
+        public async Task PostLocation(GeolocationViewModel position)
         {
-            var x = position.Latitude;
-
-            var y = position.Longitude;
+            await _gpsService.CreateLocation(position);
         }
     }
 }

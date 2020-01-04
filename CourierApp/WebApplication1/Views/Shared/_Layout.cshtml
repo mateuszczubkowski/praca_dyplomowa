@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var user = await userManager.GetUserAsync(User);
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -80,10 +83,9 @@
 <script src="~/js/mvc-grid/mvc-grid.js"></script>
 
 <script>
-
     var userRole = '@(User.IsInRole("Courier") ? "true" : "false")';
     console.log(userRole);
-    var ajaxUrl = '@Url.Action("PostLocation", "Courier")';
+    var ajaxUrl = '@Url.Action("PostLocation", "Geolocation")';
     if (userRole) {
         setInterval(function() {
                 if (navigator.geolocation) {
@@ -93,6 +95,7 @@
                         var userCoords = {
                             "Latitude": position.coords.latitude,
                             "Longitude": position.coords.longitude,
+                            "CourierId": '@user?.CourierId'
                         }
                         console.log(userCoords);
                         $.ajax({

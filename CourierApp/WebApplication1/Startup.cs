@@ -56,6 +56,7 @@ namespace CourierApp.WebApp
             services.AddScoped<IPackageService, PackageService>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
+            services.AddScoped<IGeolocationService, GeolocationService>();
 
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>

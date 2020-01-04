@@ -25,6 +25,8 @@ namespace CourierApp.Data
 
         public DbSet<ReviewLink> ReviewLinks { get; set; }
 
+        public DbSet<CourierPosition> CourierPositions { get; set; }
+
         private void DefineTables(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Courier>().HasKey(c => c.Id);
@@ -48,6 +50,12 @@ namespace CourierApp.Data
             modelBuilder.Entity<ReviewLink>().Property(rl => rl.Link).HasMaxLength(250).IsRequired();
             modelBuilder.Entity<ReviewLink>().Property(rl => rl.CourierId).IsRequired();
             modelBuilder.Entity<ReviewLink>().Property(rl => rl.Author).IsRequired();
+
+            modelBuilder.Entity<CourierPosition>().HasKey(cp => cp.Id);
+            modelBuilder.Entity<CourierPosition>().Property(cp => cp.Latitude).IsRequired();
+            modelBuilder.Entity<CourierPosition>().Property(cp => cp.Longitude).IsRequired();
+            modelBuilder.Entity<CourierPosition>().Property(cp => cp.CourierId).IsRequired();
+            modelBuilder.Entity<CourierPosition>().Property(cp => cp.Date).IsRequired();
         }
         private void SetRelationship(ModelBuilder modelBuilder)
         {

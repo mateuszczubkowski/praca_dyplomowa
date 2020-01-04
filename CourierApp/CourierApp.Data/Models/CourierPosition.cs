@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CourierApp.Core.ViewModels
+namespace CourierApp.Data.Models
 {
-    public class GeolocationViewModel
+    public class CourierPosition
     {
+        public int Id { get; set; }
+
         public double Latitude { get; set; }
 
         public double Longitude { get; set; }
 
         public int CourierId { get; set; }
+
+        public DateTime Date { get; set; }
     }
 }
