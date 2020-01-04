@@ -8,16 +8,19 @@ using CourierApp.Core.ViewModels.Packages;
 using CourierApp.Data;
 using CourierApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace CourierApp.Core.Implementation
 {
     public class GeolocationService : IGeolocationService
     {
         private readonly CourierAppDbContext _dbContext;
+        private readonly IConfiguration _configuration;
 
-        public GeolocationService(CourierAppDbContext dbContext)
+        public GeolocationService(CourierAppDbContext dbContext, IConfiguration configuration)
         {
             _dbContext = dbContext;
+            _configuration = configuration;
         }
 
         public async Task CreateLocation(GeolocationViewModel model)
@@ -50,13 +53,13 @@ namespace CourierApp.Core.Implementation
             if (location == null || (DateTime.Now - location.Date).Hours >= 1)
             {
                 model.Status = 4;
-
                 return model;
             }
             else
             {
                 model.Longitude = location.Longitude;
                 model.Latitude = location.Latitude;
+                model.Key = _configuration.GetSection("APIkey").Value;
                 model.Status = 2;
 
                 return model;
