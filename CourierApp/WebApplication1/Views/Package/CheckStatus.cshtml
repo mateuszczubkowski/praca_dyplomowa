@@ -92,24 +92,26 @@
         </div>
     </div>
 </div>
-<div id="googleMap" style="width:100%;height:400px;"></div>
 
 <script>
-    function myMap() {
-        var lat = parseFloat('@Model.Latitude'.replace(',', '.').replace(' ', ''));
-        var lng = parseFloat('@Model.Longitude'.replace(',', '.').replace(' ', ''));
-        var myLatLng = {lat: lat, lng: lng};
-        var mapProp = {
-            center: myLatLng,
-            zoom: 16,
-        };
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            title: 'Kurier'
-        });
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-        marker.setMap(map);
-    }
+        function myMap() {
+            var lat = parseFloat('@Model.Latitude'.replace(',', '.').replace(' ', ''));
+            var lng = parseFloat('@Model.Longitude'.replace(',', '.').replace(' ', ''));
+            var myLatLng = {lat: lat, lng: lng};
+            var mapProp =
+            {
+                center: myLatLng,
+                zoom: 16,
+            };
+            var marker = new google.maps.Marker(
+                    {
+                        position: myLatLng,
+                        title: 'Kurier'
+                    })
+                ;
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            marker.setMap(map);
+        }
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=@Model.Key&callback=myMap"

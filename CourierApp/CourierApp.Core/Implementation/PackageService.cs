@@ -49,11 +49,11 @@ namespace CourierApp.Core.Implementation
             }).AsNoTracking().ToList();
         }
 
-        public async Task ChangeStatus(int id, PackageStatus status)
+        public async Task DeliveredPackage(int id)
         {
             var package = await _dbContext.Packages.FirstOrDefaultAsync(x => x.Id == id);
 
-            package.Status = status.ToString();
+            package.Status = PackageStatus.Delivered.ToString();
 
             await _dbContext.SaveChangesAsync();
 
@@ -62,7 +62,7 @@ namespace CourierApp.Core.Implementation
                 var link = _reviewService.CreateReviewLink(package.CourierId);
 
                 await _reviewService.CreateReviewLink(package.CourierId, link, package.CustomerEmail);
-                await _reviewService.SendReviewLink(package.CustomerEmail, link);
+                _reviewService.SendReviewLink(package.CustomerEmail, link);
             }
         }
 

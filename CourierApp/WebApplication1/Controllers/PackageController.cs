@@ -38,9 +38,9 @@ namespace CourierApp.WebApp.Controllers
             return View(result);
         }
 
-        public async Task<IActionResult> ChangeStatus(int id, int courierId)
+        public async Task<IActionResult> Delivered(int id, int courierId)
         {
-            await _packageService.ChangeStatus(id, PackageStatus.Delivered);
+            await _packageService.DeliveredPackage(id);
 
             return RedirectToAction("PackageList", new { id = courierId });
         }

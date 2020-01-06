@@ -18,6 +18,6 @@ namespace CourierApp.Core.Implementation.Interfaces
 
         Task Create(CreateReviewViewModel model);
 
-        Task SendReviewLink(string mailTo, string link);
+        void SendReviewLink(string mailTo, string link);
     }
 }

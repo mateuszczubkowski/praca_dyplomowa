@@ -8,7 +8,6 @@ namespace CourierApp.MailService
 {
     public class EmailService : IEmailService
     {
-
         private readonly EmailConfig _config;
 
         public EmailService(IOptions<EmailConfig> emailConfig)

@@ -15,9 +15,9 @@ namespace CourierApp.Core.Implementation
     public class ReviewService : IReviewService
     {
         private readonly CourierAppDbContext _dbContext;
-        private readonly IEmailService _mailService;
+        private readonly MailQueue _mailService;
 
-        public ReviewService(CourierAppDbContext dbContext, IEmailService mailService)
+        public ReviewService(CourierAppDbContext dbContext, MailQueue mailService)
         {
             _dbContext = dbContext;
             _mailService = mailService;
@@ -88,9 +88,16 @@ namespace CourierApp.Core.Implementation
 
         }
 
-        public async Task SendReviewLink(string mailTo, string link)
+        public void SendReviewLink(string mailTo, string link)
         {
-            await _mailService.SendEmailAsync(mailTo, "Wystaw opinię", $"https://localhost:44380/review/create?link={link}");
+            var mail = new MailDto()
+            {
+                Address = mailTo,
+                Message = $"https://localhost:44380/review/create?link={link}",
+                Subject = "Wystaw opinię"
+            };
+
+            _mailService.EnqueueMail(mail);
         }
     }
 }

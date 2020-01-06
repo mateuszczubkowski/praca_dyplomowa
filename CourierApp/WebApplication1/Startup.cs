@@ -8,7 +8,7 @@ using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Data;
 using CourierApp.Data.Models;
 using CourierApp.MailService;
-using CourierApp.WebApp.Mapper;
+using CourierApp.WebApp.Worker;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Quartz;
+using Quartz.Spi;
 
 namespace CourierApp.WebApp
 {
@@ -29,6 +31,7 @@ namespace CourierApp.WebApp
         }
 
         public IConfiguration Configuration { get; }
+        private static QuartzStartup _quartzStartup;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -57,17 +60,11 @@ namespace CourierApp.WebApp
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
             services.AddScoped<IGeolocationService, GeolocationService>();
-
-            // Auto Mapper Configurations
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new DtoToModelProfile());
-            });
-
-            IMapper mapper = mappingConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            services.AddSingleton<MailQueue>();
 
             services.Configure<EmailConfig>(Configuration.GetSection("Email"));
+
+            RegisterQuartz(services);
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<CourierAppIdentityDbContext>()
@@ -99,8 +96,13 @@ namespace CourierApp.WebApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider iServiceProvider)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider iServiceProvider, IApplicationLifetime lifetime)
         {
+            _quartzStartup = app.ApplicationServices.GetService<QuartzStartup>();
+            lifetime.ApplicationStarted.Register(_quartzStartup.Start);
+            lifetime.ApplicationStopping.Register(_quartzStartup.Stop);
+            app.ApplicationServices.GetService<IScheduler>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -126,6 +128,14 @@ namespace CourierApp.WebApp
             });
 
             Seed.CreateRoles(iServiceProvider, Configuration).Wait();
+        }
+
+        private void RegisterQuartz(IServiceCollection services)
+        {
+            //Quartz services
+            services.AddSingleton<IJobFactory, QuartzJobFactory>();
+            services.AddSingleton<QuartzStartup>();
+            services.AddScoped<MailJob>();
         }
     }
 }
