@@ -1,0 +1,21 @@
+﻿@model CourierApp.Core.ViewModels.Packages.ChangePackageCourierViewModel
+
+@{
+    ViewData["Title"] = "Odbierz paczki z magazynu";
+}
+
+<h1>Odbiór paczek</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form method="post">
+                <hr />
+                @Html.EditorFor(m => m.Packages)
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Odbierz</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

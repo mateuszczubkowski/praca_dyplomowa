@@ -17,6 +17,7 @@ namespace CourierApp.WebApp.Worker
             _mailQueue = mailQueue;
             _emailService = emailService;
         }
+
         public Task Execute(IJobExecutionContext context)
         {
             var emails = _mailQueue.GetAll();

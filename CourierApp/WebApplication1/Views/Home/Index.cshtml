@@ -4,22 +4,23 @@
     var user = await userManager.GetUserAsync(User);
 }
 
-<div class="text-center">
-    @if (User.IsInRole("Courier") || User.IsInRole("Admin"))
-    {
-        <h2>Kurier</h2>
-        <a class="btn btn-success" asp-controller="Package" asp-action="PackageList" asp-route-id="@user?.CourierId">Moje paczki</a>
-    }
-    @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
-    {
-        <h2>Manager</h2>
-        <a class="btn btn-success" asp-controller="Courier" asp-action="CourierList">Lista kurierów</a>
-        <a class="btn btn-info" asp-controller="Package" asp-action="AllPackageList">Wszystkie paczki</a>
-    }
-    @if (User.IsInRole("Warehouseman") || User.IsInRole("Admin"))
-    {
-        <h2>Magazynier</h2>
-        <a class="btn btn-success" asp-controller="Package" asp-action="AllPackageList">Wszystkie paczki</a>
-        <a class="btn btn-info" asp-controller="Package" asp-action="Create">Dodaj paczkę</a>
-    }
-</div>
+    <div class="text-center">
+        @if (User.IsInRole("Courier") || User.IsInRole("Admin"))
+        {
+            <h2>Kurier</h2>
+            <a class="btn btn-success" asp-controller="Package" asp-action="PackageList" asp-route-id="@user?.CourierId">Moje paczki</a>
+            <a class="btn btn-success" asp-controller="Package" asp-action="CollectPackages" asp-route-id="@user?.CourierId">Odbiór paczek</a>
+        }
+        @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+        {
+            <h2>Manager</h2>
+            <a class="btn btn-success" asp-controller="Courier" asp-action="CourierList">Lista kurierów</a>
+            <a class="btn btn-info" asp-controller="Package" asp-action="AllPackageList">Wszystkie paczki</a>
+        }
+        @if (User.IsInRole("Warehouseman") || User.IsInRole("Admin"))
+        {
+            <h2>Magazynier</h2>
+            <a class="btn btn-success" asp-controller="Package" asp-action="AllPackageList">Wszystkie paczki</a>
+            <a class="btn btn-info" asp-controller="Package" asp-action="Create">Dodaj paczkę</a>
+        }
+    </div>
