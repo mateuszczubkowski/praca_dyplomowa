@@ -43,7 +43,7 @@ namespace CourierApp.WebApp.Worker
             var mailTrigger = TriggerBuilder.Create()
                 .WithIdentity("MailCron")
                 .StartNow()
-                .WithCronSchedule("0 0/5 * * * ?")
+                .WithCronSchedule("0 0/1 * * * ?")
                 .Build();
 
             _scheduler.ScheduleJob(emailJob, mailTrigger).Wait();

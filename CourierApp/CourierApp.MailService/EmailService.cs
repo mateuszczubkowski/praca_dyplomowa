@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using MimeKit.Text;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
 
 namespace CourierApp.MailService
@@ -41,16 +42,10 @@ namespace CourierApp.MailService
             message.To.Add(new MailboxAddress(string.Empty, email));
             message.Subject = subject;
 
-            var body = new TextPart("plain")
+            message.Body = new TextPart(TextFormat.Html)
             {
                 Text = textMessage
             };
-
-            var multipart = new Multipart("mixed");
-
-            multipart.Add(body);
-
-            message.Body = multipart;
 
             return message;
         }

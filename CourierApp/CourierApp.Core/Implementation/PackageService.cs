@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels.Packages;
 using CourierApp.Data;
 using CourierApp.Data.Models;
+using CourierApp.MailService;
 using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Bcpg;
 
@@ -18,12 +20,14 @@ namespace CourierApp.Core.Implementation
         private readonly CourierAppDbContext _dbContext;
         private readonly IReviewService _reviewService;
         private readonly IGeolocationService _gpsService;
+        private readonly MailQueue _mailService;
 
-        public PackageService(CourierAppDbContext dbContext, IReviewService reviewService, IGeolocationService gpsService)
+        public PackageService(CourierAppDbContext dbContext, IReviewService reviewService, IGeolocationService gpsService, MailQueue mailService)
         {
             _dbContext = dbContext;
             _reviewService = reviewService;
             _gpsService = gpsService;
+            _mailService = mailService;
         }
 
         public async Task<IEnumerable<PackagesListViewModel>> GetPackages(int courierId, string status)
@@ -81,15 +85,10 @@ namespace CourierApp.Core.Implementation
                 package.CourierId = null;
             }
 
-            try
-            {
-                await _dbContext.Packages.AddAsync(package);
-                await _dbContext.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
+            await _dbContext.Packages.AddAsync(package);
+            await _dbContext.SaveChangesAsync();
 
-            }
+            CreateTrackingMail(package.Id, package.CustomerEmail);
         }
 
         public async Task<IEnumerable<AllPackagesListViewModel>> GetAllPackages()
@@ -161,6 +160,24 @@ namespace CourierApp.Core.Implementation
                     await _dbContext.SaveChangesAsync();
                 }
             }
+        }
+
+        private void CreateTrackingMail(int id, string mailTo)
+        {
+            var message = File.ReadAllText(@"..\WebApplication1\wwwroot\emails\trackingMail.html");
+
+            var replace = $"{id}";
+
+            message = message.Replace("#PackageNumber#", replace);
+
+            var mail = new MailDto()
+            {
+                Address = mailTo,
+                Message = message,
+                Subject = "Śledzenie przesyłki"
+            };
+
+            _mailService.EnqueueMail(mail);
         }
     }
 }

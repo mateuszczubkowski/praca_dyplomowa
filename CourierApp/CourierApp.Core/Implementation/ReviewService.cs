@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,7 +73,7 @@ namespace CourierApp.Core.Implementation
 
                 var review = new Review
                 {
-                    Author = model.Author,
+                    Author = reviewLink.Author,
                     Content = model.Content,
                     CourierId = Convert.ToInt32(model.Link.Substring(model.Link.Length - 1)),
                     Mark = model.Mark
@@ -90,10 +91,16 @@ namespace CourierApp.Core.Implementation
 
         public void SendReviewLink(string mailTo, string link)
         {
+            var message = File.ReadAllText(@"..\WebApplication1\wwwroot\emails\reviewMail.html");
+
+            var replace = $"https://localhost:44380/review/create?link={link}";
+
+            message = message.Replace("#ReviewLinkForCustomer#", replace);
+
             var mail = new MailDto()
             {
                 Address = mailTo,
-                Message = $"https://localhost:44380/review/create?link={link}",
+                Message = message,
                 Subject = "Wystaw opinię"
             };
 
