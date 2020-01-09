@@ -1,9 +1,9 @@
 ﻿@model CourierApp.Core.ViewModels.Packages.PackageWithoutCourierViewModel
 
-<div>
-    @Model.Id
-    @Model.CustomerEmail
-    @Model.Address
-    @Html.CheckBoxFor(p => p.Check)
-    @Html.HiddenFor(p => p.Id)
-</div>
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.CustomerEmail</td>
+        <td>@Model.Address</td>
+        <td>@Html.CheckBoxFor(p => p.Check)</td>
+        <td>@Html.HiddenFor(p => p.Id)</td>
+    </tr>

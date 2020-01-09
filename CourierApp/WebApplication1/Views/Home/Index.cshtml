@@ -4,23 +4,57 @@
     var user = await userManager.GetUserAsync(User);
 }
 
-    <div class="text-center">
-        @if (User.IsInRole("Courier") || User.IsInRole("Admin"))
-        {
-            <h2>Kurier</h2>
-            <a class="btn btn-success" asp-controller="Package" asp-action="PackageList" asp-route-id="@user?.CourierId">Moje paczki</a>
-            <a class="btn btn-success" asp-controller="Package" asp-action="CollectPackages" asp-route-id="@user?.CourierId">Odbiór paczek</a>
-        }
-        @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
-        {
-            <h2>Manager</h2>
-            <a class="btn btn-success" asp-controller="Courier" asp-action="CourierList">Lista kurierów</a>
-            <a class="btn btn-info" asp-controller="Package" asp-action="AllPackageList">Wszystkie paczki</a>
-        }
-        @if (User.IsInRole("Warehouseman") || User.IsInRole("Admin"))
-        {
-            <h2>Magazynier</h2>
-            <a class="btn btn-success" asp-controller="Package" asp-action="AllPackageList">Wszystkie paczki</a>
-            <a class="btn btn-info" asp-controller="Package" asp-action="Create">Dodaj paczkę</a>
-        }
+@if (user == null)
+{
+    <div class="row align-items-end indexbody" style="height: 100%;">
+        <div class="col-md-6 align-items-center hoverimg">
+            <a href="@Url.Action("CheckStatus", "Package")">
+                <img src="images/tracking.png" width="100%"/>
+            </a>
+        </div>
+        <div class="col-md-6 align-items-end my-5 py-lg-5 hoverimg">
+            <a href="@Url.Action("Create", "Review")">
+                <img src="images/rating.png" width="100%"/>
+            </a>
+        </div>
     </div>
+}
+
+<div class="text-center">
+    @if (User.IsInRole("Courier") || User.IsInRole("Admin"))
+    {
+        <div class="row my-lg-5">
+            <div class="col-md-6 zoomimg">
+                <a asp-controller="Package" asp-action="PackageList" asp-route-id="@user?.CourierId"><img src="images/packagelist.jpg" width="90%" class="m-auto" /></a>
+            </div>
+            <div class="col-md-6 zoomimg">
+                <a asp-controller="Package" asp-action="CollectPackages" asp-route-id="@user?.CourierId"><img src="images/collect.jpg" width=90% class="m-auto" /></a>
+            </div>
+        </div>
+    }
+    @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+    {
+        <div class="row my-lg-5">
+            <div class="col-md-6 zoomimg">
+                <a asp-controller="Courier" asp-action="CourierList" asp-route-id="@user?.CourierId"><img src="images/courierlist.jpg" width="90%" class="m-auto zoomimg" /></a>
+            </div>
+            <div class="col-md-6 zoomimg">
+                <a asp-controller="Package" asp-action="AllPackageList" asp-route-id="@user?.CourierId"><img src="images/packagelist.jpg" width=90% class="m-auto zoomimg" /></a>
+            </div>
+        </div>
+    }
+    @if (User.IsInRole("Warehouseman") || User.IsInRole("Admin"))
+    {
+        <div class="row my-lg-5">
+            <div class="col-md-4 zoomimg">
+                <a asp-controller="Package" asp-action="Create" asp-route-id="@user?.CourierId"><img src="images/createpackage.jpg" width="90%" class="m-auto zoomimg" /></a>
+            </div>
+            <div class="col-md-4 zoomimg">
+                <a asp-controller="Package" asp-action="AllPackageList" asp-route-id="@user?.CourierId"><img src="images/packagelist.jpg" width=90% class="m-auto zoomimg" /></a>
+            </div>
+            <div class="col-md-4 zoomimg">
+                <a asp-controller="Package" asp-action="ChangePackageCourier" asp-route-id="@user?.CourierId"><img src="images/changecourier.jpg" width=90% class="m-auto zoomimg" /></a>
+            </div>
+        </div>  
+    }
+</div>

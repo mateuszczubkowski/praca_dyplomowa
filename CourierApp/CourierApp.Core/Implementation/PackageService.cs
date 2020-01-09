@@ -43,6 +43,18 @@ namespace CourierApp.Core.Implementation
 
         public IEnumerable<PackageWithoutCourierViewModel> GetPackages(int courierId, PackageStatus status)
         {
+            if (courierId == 0)
+            {
+                return _dbContext.Packages.Where(x => x.CourierId == null && x.Status == status.ToString()).Select(x => new PackageWithoutCourierViewModel()
+                {
+                    Address = x.Address,
+                    CustomerEmail = x.CustomerEmail,
+                    Id = x.Id,
+                    Status = x.Status,
+                    Check = false
+                }).AsNoTracking().ToList();
+            }
+
             return _dbContext.Packages.Where(x => x.CourierId == courierId && x.Status == status.ToString()).Select(x => new PackageWithoutCourierViewModel()
             {
                 Address = x.Address,

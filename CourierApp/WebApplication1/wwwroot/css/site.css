@@ -42,8 +42,8 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
 .footer {
   position: absolute;
@@ -54,3 +54,35 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.navbar {
+    background-color: #E3FAFF !important;
+}
+
+.indexbody {
+    background-image: url('../images/background.png') !important;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.hoverimg:hover {
+    transform: scale(1.4) !important;
+}
+
+.zoomimg {
+    width: 90%;
+    overflow: hidden;
+}
+
+    .zoomimg img {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+    }
+
+    .zoomimg:hover img {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }

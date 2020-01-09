@@ -4,16 +4,33 @@
     ViewData["Title"] = "Odbierz paczki z magazynu";
 }
 
-<h1>Odbiór paczek</h1>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <section>
             <form method="post">
+                <h2>Odbiór paczek</h2>
                 <hr />
-                @Html.EditorFor(m => m.Packages)
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Klient</th>
+                                <th scope="col">Adres doręczenia</th>
+                                <th scope="col">Odbierz</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @Html.EditorFor(m => m.Packages)
+                            </tbody>
+                        </table>
+                    </div>
+                    @Html.HiddenFor(x => x.CourierId)
+                </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Odbierz</button>
+                    <button type="submit" class="col-md-12 btn btn-success">Zatwierdź</button>
                 </div>
             </form>
         </section>

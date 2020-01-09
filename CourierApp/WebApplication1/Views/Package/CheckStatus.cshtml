@@ -12,6 +12,7 @@
                 <div class="row mb-3">
                     <div class="col-md-12 h3 text-center">
                         Wprowadź dane, aby sprawdzić status swojej przesyłki.
+                        <hr/>
                     </div>
                 </div>
             }
@@ -31,7 +32,7 @@
                         <form asp-controller="Package" asp-action="CheckStatus" method="post" autocomplete="on">
                             <div class="row pt-1 ">
                                 <div class="col-md-3 text-right py-2">
-                                    <label asp-for="Mail"></label> *
+                                    <label asp-for="Mail"></label>*
                                 </div>
                                 <div class="col-md-9 ">
                                     <input type="text" asp-for="Mail" class="form-control" />
@@ -40,7 +41,7 @@
 
                             <div class="row pt-1 ">
                                 <div class="col-md-3 text-right py-2">
-                                    <label asp-for="Id"></label> *
+                                    <label asp-for="Id"></label>*
                                 </div>
                                 <div class="col-md-9">
                                     <input asp-for="Id" type="text" class="form-control" />
@@ -58,36 +59,40 @@
             }
             @if (Model.Status == 1)
             {
-                <div class="row mb-3">
-                    <div class="col-md-12 h3 text-center">
-                        Twoja paczka wciąż znajduje się w naszym magazynie i oczekuje na odebranie przez kuriera.
-                    </div>
+            <div class="row mb-3">
+                <img src="~/images/inmagazine.png" width="50%" class="rounded mx-auto" />
+                <div class="col-md-12 h3 text-center">
+                    Twoja paczka wciąż znajduje się w naszym magazynie i oczekuje na odebranie przez kuriera.
                 </div>
+            </div>
             }
             @if (Model.Status == 2)
             {
                 <div class="row mb-3">
                     <div class="col-md-12 h3 text-center">
                         Twoja paczka jest już u kuriera. Oto jego lokalizacja na mapie:
+                        <br/>
                         <div id="googleMap" style="width:100%;height:400px;"></div>
                     </div>
                 </div>
             }
             @if (Model.Status == 3)
             {
-                <div class="row mb-3">
-                    <div class="col-md-12 h3 text-center">
-                        Twoja paczka została już doręczona! Jeżeli to nie Ty ją odebrałeś, skontaktuj się z nami.
-                    </div>
+            <div class="row mb-3">
+                <img src="~/images/delivered.png" width="50%" class="rounded mx-auto" />
+                <div class="col-md-12 h3 text-center">
+                    Twoja paczka została już doręczona! Jeżeli to nie Ty ją odebrałeś, skontaktuj się z nami.
                 </div>
+            </div>
             }
             @if (Model.Status == 4)
             {
-                <div class="row mb-3">
-                    <div class="col-md-12 h3 text-center">
-                        Twoja paczka jest już u kuriera. Niestety, jego lokalizacja jest niedostępna.
-                    </div>
+            <div class="row mb-3">
+                <img src="~/images/inprogress.png" width="50%" class="rounded mx-auto" />
+                <div class="col-md-12 h3 text-center">
+                    Twoja paczka znajduje się w rękach naszego kuriera. Niestety, jego lokalizacja jest obecnie niedostępna.
                 </div>
+            </div>
             }
         </div>
     </div>

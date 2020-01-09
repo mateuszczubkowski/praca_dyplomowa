@@ -105,7 +105,8 @@ namespace CourierApp.WebApp.Controllers
         {
             var model = new ChangePackageCourierViewModel()
             {
-                Packages = _packageService.GetPackages(id, PackageStatus.InMagazine)
+                Packages = _packageService.GetPackages(id, PackageStatus.InMagazine),
+                CourierId = id
             };
 
             return View(model);
@@ -114,7 +115,7 @@ namespace CourierApp.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> CollectPackages(ChangePackageCourierViewModel model)
         {
-            await _packageService.ChangeCourier(model);
+            await _packageService.CollectPackage(model);
 
             return RedirectToAction("Index", "Home");
         }
