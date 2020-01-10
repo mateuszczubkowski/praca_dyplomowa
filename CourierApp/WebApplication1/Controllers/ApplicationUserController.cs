@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CourierApp.WebApp.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class ApplicationUserController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -25,7 +27,6 @@ namespace CourierApp.WebApp.Controllers
             _courierService = courierService;
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Create()
         {
@@ -34,7 +35,6 @@ namespace CourierApp.WebApp.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateApplicationUserViewModel model)
         {
@@ -77,6 +77,31 @@ namespace CourierApp.WebApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetUsers()
+        {
+            var model = await _userService.GetUsers();
 
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ChangePassword(string id)
+        {
+            var model = new ChangePasswordViewModel()
+            {
+                UserId = id
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            await _userService.ChangeUserPassword(model);
+
+            return RedirectToAction("GetUsers");
+        }
     }
 }

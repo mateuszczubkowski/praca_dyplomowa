@@ -15,7 +15,7 @@
           columns.Add(model => model.CustomerEmail).Titled("E-mail");
           columns.Add(model => model.Address).Titled("Adres dostawy");
           columns.Add(model => model.Status).Titled("Status");
-          columns.Add(model => Html.ActionLink("Doręczono", "Delivered", "Package", new { id = model.Id, courierId = @courierId }, new { @class = "btn btn-primary" }));
+          columns.Add(model => Html.ActionLink("Doręcz", "Delivered", "Package", new { id = model.Id, courierId = @courierId }, new { @class = "btn btn-primary" }));
       })
       .Empty("Brak danych")
       .Filterable()

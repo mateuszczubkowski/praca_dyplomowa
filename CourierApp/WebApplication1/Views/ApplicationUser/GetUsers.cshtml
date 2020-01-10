@@ -1,0 +1,17 @@
+﻿@model IEnumerable<CourierApp.Core.ViewModels.ApplicationUser.UserViewModel>
+
+@(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Id).Titled("Id");
+        columns.Add(model => model.Email).Titled("Email");
+        columns.Add(model => model.CourierId).Titled("CourierId");
+        columns.Add(model => string.Join(',', model.Roles)).Titled("Role");
+        columns.Add(model => Html.ActionLink("Zmień hasło", "ChangePassword", "ApplicationUser", new {id = model.Id}, new { @class = "btn btn-secondary" }));
+    })
+    .Empty("Brak danych")
+    .Filterable()
+    .Sortable()
+    .Pageable()
+    )
