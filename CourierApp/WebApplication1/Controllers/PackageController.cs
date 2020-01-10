@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using CourierApp.Core.Enums;
 using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels.Packages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourierApp.WebApp.Controllers
 {
+    [Authorize]
     public class PackageController : Controller
     {
         private readonly IPackageService _packageService;
@@ -64,6 +66,7 @@ namespace CourierApp.WebApp.Controllers
             return RedirectToAction("Index","Home");
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult CheckStatus()
         {
@@ -72,6 +75,7 @@ namespace CourierApp.WebApp.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> CheckStatus(CheckPackageStatusViewModel model)
         {

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels.Review;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourierApp.WebApp.Controllers
 {
+    [Authorize]
     public class ReviewController : Controller
     {
         private readonly IReviewService _reviewService;
@@ -17,6 +19,7 @@ namespace CourierApp.WebApp.Controllers
             _reviewService = reviewService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Create(string link)
         {
@@ -25,6 +28,7 @@ namespace CourierApp.WebApp.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Create(CreateReviewViewModel model)
         {

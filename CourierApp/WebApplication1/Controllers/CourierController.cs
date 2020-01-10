@@ -2,10 +2,12 @@
 using CourierApp.Core.Implementation.Interfaces;
 using CourierApp.Core.ViewModels.Courier;
 using CourierApp.MailService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourierApp.WebApp.Controllers
 {
+    [Authorize]
     public class CourierController : Controller
     {
         private readonly ICourierManagementService _courierManagement;
