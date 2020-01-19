@@ -13,5 +13,8 @@
     .Empty("Brak danych")
     .Filterable()
     .Sortable()
-    .Pageable()
-    )
+    .Pageable(pager =>
+    {
+        pager.ShowPageSizes = true;
+    }
+    ))

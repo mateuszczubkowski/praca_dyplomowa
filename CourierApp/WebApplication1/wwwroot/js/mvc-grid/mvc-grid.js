@@ -64,39 +64,39 @@ var MvcGrid = (function () {
         instances: [],
         lang: {
             text: {
-                'contains': 'Contains',
-                'equals': 'Equals',
-                'not-equals': 'Not equals',
-                'starts-with': 'Starts with',
-                'ends-with': 'Ends with'
+                'contains': 'Zawiera',
+                'equals': 'Równe',
+                'not-equals': 'Inne niż',
+                'starts-with': 'Zczyna się',
+                'ends-with': 'Kończy się'
             },
             number: {
-                'equals': 'Equals',
-                'not-equals': 'Not equals',
-                'less-than': 'Less than',
-                'greater-than': 'Greater than',
-                'less-than-or-equal': 'Less than or equal',
-                'greater-than-or-equal': 'Greater than or equal'
+                'equals': 'Równe',
+                'not-equals': 'Inne niż',
+                'less-than': 'Mniej niż',
+                'greater-than': 'Więcej niż',
+                'less-than-or-equal': 'Mniej niż lub równe',
+                'greater-than-or-equal': 'Więcej niż lub równe'
             },
             date: {
-                'equals': 'Equals',
-                'not-equals': 'Not equals',
-                'earlier-than': 'Earlier than',
-                'later-than': 'Later than',
-                'earlier-than-or-equal': 'Earlier than or equal',
-                'later-than-or-equal': 'Later than or equal'
+                'equals': 'Równe',
+                'not-equals': 'Inne niż',
+                'earlier-than': 'Wcześniej niż',
+                'later-than': 'Później niż',
+                'earlier-than-or-equal': 'Wcześniej lub równe',
+                'later-than-or-equal': 'Później lub równe'
             },
             enum: {
-                'equals': 'Equals',
-                'not-equals': 'Not equals'
+                'equals': 'Równe',
+                'not-equals': 'Inne niż'
             },
             guid: {
-                'equals': 'Equals',
-                'not-equals': 'Not equals'
+                'equals': 'Równe',
+                'not-equals': 'Inne niż'
             },
             boolean: {
-                'equals': 'Equals',
-                'not-equals': 'Not equals'
+                'equals': 'Równe',
+                'not-equals': 'Inne niż'
             },
             filter: {
                 'apply': '&#10003;',
@@ -104,8 +104,8 @@ var MvcGrid = (function () {
             },
             operator: {
                 'select': '',
-                'and': 'and',
-                'or': 'or'
+                'and': 'i',
+                'or': 'lub'
             }
         },
 

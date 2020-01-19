@@ -38,41 +38,13 @@ namespace CourierApp.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateApplicationUserViewModel model)
         {
-            int courierId = 0;
-
             if (!ModelState.IsValid)
             {
                 model.Roles = _userService.GetRoles();
                 return View(model);
             }
 
-            if (model.Role == "Courier")
-            {
-                courierId = await _courierService.AddCourier(new CreateCourierViewModel()
-                {
-                    FirstName = model.FirstName,
-                    SecondName = model.SecondName,
-                    Email = model.Email,
-                    PhoneNumber = model.PhoneNumber
-                });
-            }
-
-            var identityUser = new ApplicationUser()
-            {
-                UserName = model.Email,
-                Email = model.Email,
-                CourierId = courierId 
-            };
-
-            var result = await _userManager.CreateAsync(identityUser, model.Password);
-
-            if (result.Succeeded)
-            {
-                var currentUser = await _userManager.FindByEmailAsync(identityUser.Email);
-
-                await _userManager.AddToRoleAsync(currentUser, model.Role);
-
-            }
+            await _userService.Create(model);
 
             return RedirectToAction("Index", "Home");
         }

@@ -14,5 +14,7 @@ namespace CourierApp.Core.Implementation.Interfaces
         Task<IEnumerable<UserViewModel>> GetUsers();
 
         Task ChangeUserPassword(ChangePasswordViewModel model);
+
+        Task Create(CreateApplicationUserViewModel model);
     }
 }
