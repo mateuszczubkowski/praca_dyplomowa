@@ -50,7 +50,7 @@ namespace CourierApp.Core.Implementation
 
             var location = await _dbContext.CourierPositions.AsNoTracking().FirstOrDefaultAsync(x => x.CourierId == package.CourierId);
 
-            if (location == null || (DateTime.Now - location.Date).Hours >= 1)
+            if (location == null)
             {
                 model.Status = 4;
                 return model;
@@ -61,6 +61,7 @@ namespace CourierApp.Core.Implementation
                 model.Latitude = location.Latitude;
                 model.Key = _configuration.GetSection("APIkey").Value;
                 model.Status = 2;
+                model.GeolocationDate = location.Date;
 
                 return model;
             }

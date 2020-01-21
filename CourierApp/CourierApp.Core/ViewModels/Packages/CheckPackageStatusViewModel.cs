@@ -20,5 +20,7 @@ namespace CourierApp.Core.ViewModels.Packages
         public double Longitude { get; set; }
 
         public string Key { get; set; }
+
+        public DateTime? GeolocationDate { get; set; }
     }
 }
